@@ -5,6 +5,8 @@ import MainPage from "./components/MainPage/MainPage";
 // import "react-router-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+// Insert test demo comment for Joye to learn branches
+
 function App() {
   return (
     <Router>
