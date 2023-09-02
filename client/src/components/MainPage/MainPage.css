@@ -1,0 +1,118 @@
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
+*,
+*::before,
+*::after{
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    display:inline-flex;
+}
+
+.sidebar {
+    width: 400px;
+    height: 619px; 
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(206, 240, 253);
+}
+
+.iconBar {
+    background-color: skyblue;
+    overflow: auto;
+    width: flex;
+}
+
+.iconBar a {
+    display: block;
+    color: rgb(199, 190, 15);
+    text-align: center;
+    padding: 14px 14px;
+    text-decoration: none;
+    font-size: x-large;
+    float: left;
+    width: 25%;
+  
+    transition: 0.3s;
+}
+
+.iconBar a:hover {
+    color: rgba(255, 255, 255, 0.331);
+    text-shadow: 0 0px 0px rgb(255, 255, 255);
+    transition: 0.3s;
+}
+
+/* do this later */
+.active {
+    color: white;
+}
+
+.pageType {
+    color: white;
+    margin-left: 20px;
+    margin-top: 10px;
+    font-size: x-large;
+}
+
+.search input[type=text]{
+    width: 320px;
+    height: 25px;
+    border-radius: 25px;
+    padding: 10px;
+    border: none;
+}
+     
+.search{
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+     
+.search button{
+    background-color: skyblue;
+    color: #f2f2f2;
+    float: right;
+    padding: 5px;
+    margin-left: 10px;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.listPeople {
+    margin: 20px;
+}
+
+.person {
+    list-style-type: none;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    height: 110px;
+}
+
+.dot {
+    height: 70px;
+    width: 70px;
+    background-color: #bbb;
+    border-radius: 50%;
+    float: left;
+    margin-right: 20px;
+}
+
+.map {
+    background-color: rgb(222, 222, 222);
+}
