@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import LandingPage from "./components/LandingPage/LandingPage";
 import MainPage from "./components/MainPage/MainPage";
@@ -9,8 +8,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LandingPage />}></Route>
-        <Route path="/map" element={<MainPage />}></Route>
+        <Route path="/map" element={<LandingPage />}></Route>
+        <Route path="/" element={<MainPage />}></Route>
       </Routes>
     </Router>
   );
