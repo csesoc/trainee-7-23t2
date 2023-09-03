@@ -1,0 +1,64 @@
+:root {
+    --colour-base: white;
+    --colour-accent-primary: #82B1FF;
+    --colour-accent-primary-dark: #3B77B3;
+    --colour-font: black;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+.container {
+    display: flex;
+    color: var(--colour-font);
+}
+
+main {
+    width: 100%;
+    padding: 1.25rem;
+}
+
+.sidebar {
+    background: var(--colour-accent-primary);
+    min-height: 100vh;
+    width: 18.75rem;
+    transition: all 0.5s;
+}
+
+.top-section {
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    padding: 1.25rem;
+}
+
+.logo {
+    font-size: 2rem;
+}
+
+.bars {
+    display: flex;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.link {
+    display: flex;
+    padding: 1.25rem;
+    gap: 2rem;
+    transition: all 0.5s;
+    color: var(--colour-font);
+}
+
+.link:hover, .active {
+    background: var(--colour-accent-primary-dark);
+    color: var(--colour-base);
+    transition: all 0.5s;
+}
+
+.icon, .link-text {
+    font-size: 1.25rem;
+}

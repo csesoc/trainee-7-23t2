@@ -1,9 +1,10 @@
 const Friends = () => {
     return (
       <div>
-        <h1>This is the main page!!</h1>
+        <h1>friend list here</h1>
       </div>
     );
   };
-  export default Friends;
+
+export default Friends;
   
