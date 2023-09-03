@@ -1,9 +1,10 @@
 import "./MainPage.css";
+import "./SideBar.js";
 
 const MainPage = () => {
   return (
-    <div class="wrapper">
-      <div class="sidebar">
+    <div class="wrapper">        
+      <div class="sidebar" id="mySidenav">
         <div class="iconBar">
           <ul class="icons">
             <a href="#Friends">👥</a>
@@ -25,9 +26,9 @@ const MainPage = () => {
             </button>
           </form>
         </div>
+        {/* temporary: just checking visuals rn */}
         <ul class="listPeople">
           <li class="person">
-            {/* temporary */}
             <span class="dot"></span>
             <h3>Name</h3>
             <p>Status</p>
