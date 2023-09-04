@@ -1,18 +1,30 @@
 import "./MainPage.css";
 import "./SideBar.js";
-
+import "./sidebar_sections/AddFriends";
+import "./sidebar_sections/FindFriends";
+import "./sidebar_sections/Inbox";
+import React, { useState } from "react";
 const MainPage = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
   return (
-    <div class="wrapper">        
-      <div class="sidebar" id="mySidenav">
-        <div class="iconBar">
-          <ul class="icons">
-            <a href="#Friends">👥</a>
-            <a href="#findFriends">🔍</a>
-            <a href="#inbox">📩</a>
-            <a href="#settingsPage">🔧</a>
-          </ul>
-        </div>
+    <div className={`wrapper ${isSidebarOpen ? "" : "collapsed"}`}>       
+      <div class="iconBar">
+        <button onClick={toggleSidebar} class="close">
+          ☰
+        </button>
+        <ul class="icons">
+          <a href="map/addfriends" onClick={toggleSidebar} >👥</a>
+          <a href="map/findfriends" onClick={toggleSidebar} >🔍</a>
+          <a href="map/inbox" onClick={toggleSidebar} >📩</a>
+          <a href="settings">🔧</a>
+        </ul>
+      </div>
+
+      <div className={`sidebar ${isSidebarOpen ? "" : "collapsed"}`} id="mySidenav">
         <div class="pageType">
           <h3>Add Friends</h3>
         </div>
@@ -26,7 +38,7 @@ const MainPage = () => {
             </button>
           </form>
         </div>
-        {/* temporary: just checking visuals rn */}
+
         <ul class="listPeople">
           <li class="person">
             <span class="dot"></span>
