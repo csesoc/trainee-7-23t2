@@ -13,7 +13,7 @@ const MainPage = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const handleIconClick = (content, title) => {
+  const handleIconClick = (content) => {
     setSelectedContent(content);
     setIsSidebarOpen(true);
   };

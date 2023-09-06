@@ -14,9 +14,9 @@ const FindFriends = () => {
             placeholder="Search..."
             name="search"
           />
-          <button>
+          {/* <button>
             🔍
-          </button>
+          </button> */}
         </form>
       </div>
 
@@ -26,7 +26,31 @@ const FindFriends = () => {
           <h3>Name</h3>
           <p>Status</p>
         </li>
-        {/* Additional list items for friends */}
+        <li className="person">
+          <span className="dot"></span>
+          <h3>Name</h3>
+          <p>Status</p>
+        </li>
+        <li className="person">
+          <span className="dot"></span>
+          <h3>Name</h3>
+          <p>Status</p>
+        </li>
+        <li className="person">
+          <span className="dot"></span>
+          <h3>Name</h3>
+          <p>Status</p>
+        </li>
+        <li className="person">
+          <span className="dot"></span>
+          <h3>Name</h3>
+          <p>Status</p>
+        </li>
+        <li className="person">
+          <span className="dot"></span>
+          <h3>Name</h3>
+          <p>Status</p>
+        </li>
       </ul>
     </div>
   );

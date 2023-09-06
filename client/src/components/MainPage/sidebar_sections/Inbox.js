@@ -14,9 +14,9 @@ const Inbox = () => {
             placeholder="Search..."
             name="search"
           />
-          <button>
+          {/* <button>
             🔍
-          </button>
+          </button> */}
         </form>
       </div>
 
