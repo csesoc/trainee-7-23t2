@@ -1,11 +1,11 @@
-// AddFriends.js
+// Inbox.js
 import React from "react";
 
-const AddFriends = () => {
+const Inbox = () => {
   return (
-    <div>
+    <div className="inbox">
       <div className="pageType">
-        <h3>Friends List</h3>
+        <h3>Friend Requests</h3>
       </div>
       <div className="search">
         <form action="#">
@@ -24,20 +24,22 @@ const AddFriends = () => {
         <li className="person">
           <span className="dot"></span>
           <div className="personDetails">
-            <h3>Name</h3>
-            <p>Status</p>
-
+            <h3>Name</h3> 
+            <div className="personRequestButtons">
+              <button onClick={() => {}} className="acceptRequest">Accept</button>
+              <button onClick={() => {}} className="declineRequest">Decline</button>
+            </div>
           </div>
-          
         </li>
         <li className="person">
           <span className="dot"></span>
           <div className="personDetails">
-            <h3>Name</h3>
-            <p>Status</p>
-
+            <h3>Name</h3> 
+            <div className="personRequestButtons">
+              <button onClick={() => {}} className="acceptRequest">Accept</button>
+              <button onClick={() => {}} className="declineRequest">Decline</button>
+            </div>
           </div>
-          
         </li>
         {/* Additional list items for friends */}
       </ul>
@@ -45,4 +47,4 @@ const AddFriends = () => {
   );
 };
 
-export default AddFriends;
+export default Inbox;

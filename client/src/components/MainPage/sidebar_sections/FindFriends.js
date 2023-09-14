@@ -21,36 +21,29 @@ const FindFriends = () => {
       </div>
 
       <ul className="listPeople">
-        <li className="person">
+      <li className="person">
           <span className="dot"></span>
-          <h3>Name</h3>
-          <p>Status</p>
+          <div className="personDetails">
+            <h3>Name</h3>
+            <p>Description/Bio</p>
+
+          </div>
+          <button className="addButton" onClick={() => {}}>+</button>
+
+          
         </li>
         <li className="person">
           <span className="dot"></span>
-          <h3>Name</h3>
-          <p>Status</p>
+          <div className="personDetails">
+            <h3>Name</h3>
+            <p>Description/Bio</p>
+
+          </div>
+          <button className="addButton" onClick={() => {}}>+</button>
+
+          
         </li>
-        <li className="person">
-          <span className="dot"></span>
-          <h3>Name</h3>
-          <p>Status</p>
-        </li>
-        <li className="person">
-          <span className="dot"></span>
-          <h3>Name</h3>
-          <p>Status</p>
-        </li>
-        <li className="person">
-          <span className="dot"></span>
-          <h3>Name</h3>
-          <p>Status</p>
-        </li>
-        <li className="person">
-          <span className="dot"></span>
-          <h3>Name</h3>
-          <p>Status</p>
-        </li>
+        
       </ul>
     </div>
   );
