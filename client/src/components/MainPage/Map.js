@@ -13,7 +13,7 @@ const Map = () => {
 
   /*
   return (
-    <LoadScript googleMapsApiKey={"AIzaSyDXf10s0TpCu85xA9q_TPVFu8S6OJ4j4Po"}>
+    <LoadScript googleMapsApiKey={""}>
       <GoogleMap
         center={center}
         zoom={17}
