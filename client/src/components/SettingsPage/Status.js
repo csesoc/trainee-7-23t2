@@ -1,19 +1,24 @@
 import "./Status.css";
 
 const Status = () => {
+    const statusOptions = [
+        {
+
+        }
+    ]
     return (
         <div className="container-status-wrapper">
             <div className="container-status">
-                <label>Available To Hang
+                <label className="status-option">Available To Hang
                     <input type="radio" name="status" value="available"/>
                 </label> 
-                <label>In Class
+                <label className="status-option">In Class
                     <input type="radio" name="status" value="in class"/>
                 </label> 
-                <label>Do Not Disturb
+                <label className="status-option">Do Not Disturb
                     <input type="radio" name="status" value="do not disturb"/>
                 </label>
-                <label>Doomed
+                <label className="status-option">Doomed
                     <input type="radio" name="status" value="doomed"/>
                 </label>
             </div>
