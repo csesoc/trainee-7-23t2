@@ -248,7 +248,8 @@ html, body {
     width: 100%;
     flex-grow: 1;
     position: relative;
-
+}
+    
 ::-webkit-scrollbar {
     width: 20px;
   }
