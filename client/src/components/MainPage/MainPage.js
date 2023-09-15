@@ -5,11 +5,14 @@ import FindFriends from "./sidebar_sections/FindFriends";
 import FriendRequests from "./sidebar_sections/FriendRequests";
 import Map from "./Map.js"
 import React, { useState } from "react";
+import Modal from "./Modal";
+
 
 const MainPage = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [selectedContent, setSelectedContent] = useState("addFriends");
-
+  const [openModal, setOpenModal] = useState(false);
+  
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -42,7 +45,7 @@ const MainPage = () => {
           <a href="#"  onClick={() => handleIconClick("addFriends")}>👥</a>
           <a href="#" onClick={() => handleIconClick("findFriends")} >🔍</a>
           <a href="#" onClick={() => handleIconClick("friendRequests")} >📩</a>
-          <a href="settings">🔧</a>
+          <a href="#" onClick={() => setOpenModal(true)} >🔧</a>
         </ul>
       </div>
 
@@ -52,6 +55,7 @@ const MainPage = () => {
       
       <div class="map">
         <Map />
+        {openModal && <Modal closeModal={setOpenModal}/>}
       </div>
     </div>
   );

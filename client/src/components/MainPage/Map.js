@@ -1,6 +1,6 @@
-import React, { } from "react";
-import { GoogleMap, LoadScript } from "@react-google-maps/api";
 
+import React from "react";
+import { GoogleMap, LoadScript } from "@react-google-maps/api";
 
 // Temporary Location + profile map marker using a random location
 const Map = () => {
@@ -10,7 +10,7 @@ const Map = () => {
     lng: 151.2313,
   };
 
-
+  // const [openModal, setOpenModal] = useState(false);
   
   return (
     <LoadScript googleMapsApiKey={""}>
@@ -20,6 +20,8 @@ const Map = () => {
         mapContainerStyle={{ height: "100vh", width: "100%" }}
       >
       </GoogleMap>
+      {/* {openModal && <Modal closeModal={setOpenModal}/>} */}
+
     </LoadScript>
   );
   
