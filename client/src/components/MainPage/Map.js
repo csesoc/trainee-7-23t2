@@ -11,18 +11,18 @@ const Map = () => {
   };
 
 
-  /*
+  
   return (
     <LoadScript googleMapsApiKey={""}>
       <GoogleMap
         center={center}
         zoom={17}
-        mapContainerStyle={{ height: "100vh", width: "100vw" }}
+        mapContainerStyle={{ height: "100vh", width: "100%" }}
       >
       </GoogleMap>
     </LoadScript>
   );
-  */
+  
 };
 
 export default Map;
