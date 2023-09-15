@@ -6,7 +6,6 @@ import { LoginForm } from "./Forms";
 import { SignUpForm } from "./Forms";
 import { GreyOut } from "./Forms";
 
-
 const Modals = {
   SignUp: "signUp",
   Login: "logIn",
@@ -23,7 +22,7 @@ const LandingPage = () => {
     let currentUser = localStorage.getItem("Current user");
     if (currentUser !== null) {
       navigate("/map");
-      console.log("hello " + currentUser);
+      console.log("hello " + currentUser); // delete later
     } else {
       setActiveModal(Modals.Login);
     }
@@ -57,6 +56,8 @@ const LandingPage = () => {
       <LoginForm activeModal={activeModal} />
       <SignUpForm activeModal={activeModal} />
       <GreyOut activeModal={activeModal} onGreyClick={handleGreyOutClick} />
+      <img src={require("../../img/front1.png")} alt="" id="left-img" />
+      <img src={require("../../img/front2.png")} alt="" id="right-img" />
     </>
   );
 };

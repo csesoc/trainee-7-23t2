@@ -182,3 +182,25 @@ nav>button {
 .invisible {
     display: none;
 }
+
+#left-img {
+    z-index: -1;
+    position: absolute;
+    left: -100px;
+    bottom: 42px;
+
+    width: 40%;
+    min-width: 450px;
+    height: auto;
+}
+
+#right-img {
+    z-index: -1;
+    position: absolute;
+    right: -100px;
+    bottom: 45px;
+
+    width: 45%;
+    min-width: 480px;
+    height: auto;
+}
