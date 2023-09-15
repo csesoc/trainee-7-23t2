@@ -150,18 +150,97 @@ html, body {
     list-style-type: none;
     background-color: white;
     border-radius: 10px;
-    padding: 20px;
+    padding: 5px;
     height: 110px;
     margin-bottom: 10px;
+    display: inline-flex;
+    width: 100%;
 }
 
 .dot {
-    height: 70px;
+    height: 70%;
     width: 70px;
     background-color: #bbb;
     border-radius: 50%;
     float: left;
-    margin-right: 20px;
+    margin: 15px 20px 20px 20px;
+}
+
+.addButton {   
+    height: 100%;
+    width: 10%;
+    background-color: #4B91D2;
+    border-radius: 10%;
+    float: right;
+    margin-left: auto;
+    border-color: transparent;
+
+    text-align: center;
+    font-weight: 1000;
+    font-size: 30px;
+    color: white;
+
+    transition: 0.5s;
+}
+
+.addButton:hover{
+    transition: 0.5s;
+    background-color: #5081af;
+}
+
+.personDetails {
+    margin-left: 2%;
+    margin-top: 15px;
+    color: #7A91A6;
+    font-size: 20px;
+}
+
+.friendRequestContainer {
+    height: 100%;
+    float: right;
+    width: 70%;
+    
+}
+
+.personRequestButtons {
+    display: inline-flex;
+}
+
+.acceptRequest {
+    color: white;
+    border: transparent;
+    border-radius: 5px;
+    font-size: 13px;
+    background-color: #4B91D2;
+    margin-top: 10px;
+    padding: 7% 20% 7% 20%;
+    text-align: center;
+
+    transition: 0.5s;
+}
+
+.acceptRequest:hover {
+    transition: 0.5s;
+    background-color: #5081af;
+}
+
+.declineRequest {
+    color: white;
+    border: transparent;
+    border-radius: 5px;
+    font-size: 13px;
+    background-color: #98AFC5;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 7% 20% 7% 20%;
+    text-align: center;
+    
+    transition: 0.5s;
+}
+
+.declineRequest:hover {
+    transition: 0.5s;
+    background-color: red;
 }
 
 .map {

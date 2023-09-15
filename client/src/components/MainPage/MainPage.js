@@ -2,7 +2,8 @@ import "./MainPage.css";
 import "./SideBar.js";
 import AddFriends from "./sidebar_sections/AddFriends";
 import FindFriends from "./sidebar_sections/FindFriends";
-import Inbox from "./sidebar_sections/Inbox";
+import FriendRequests from "./sidebar_sections/FriendRequests";
+import Map from "./Map.js"
 import React, { useState } from "react";
 
 const MainPage = () => {
@@ -24,8 +25,8 @@ const MainPage = () => {
         return <AddFriends />;
       case "findFriends":
         return <FindFriends />;
-      case "inbox":
-        return <Inbox />;
+      case "friendRequests":
+        return <FriendRequests />;
       default:
         return null;
     }
@@ -40,7 +41,7 @@ const MainPage = () => {
         <ul class="icons">
           <a href="#"  onClick={() => handleIconClick("addFriends")}>👥</a>
           <a href="#" onClick={() => handleIconClick("findFriends")} >🔍</a>
-          <a href="#" onClick={() => handleIconClick("inbox")} >📩</a>
+          <a href="#" onClick={() => handleIconClick("friendRequests")} >📩</a>
           <a href="settings">🔧</a>
         </ul>
       </div>
@@ -50,7 +51,7 @@ const MainPage = () => {
       </div>
       
       <div class="map">
-        <p>this is the map</p>
+        <Map />
       </div>
     </div>
   );
