@@ -19,12 +19,12 @@ const LandingPage = () => {
 
   // Clicking on the "start searching!" button
   function handleSearchClick() {
-    let currentUser = localStorage.getItem("Current user");
+    let currentUser = localStorage.getItem("current user");
     if (currentUser !== null) {
       navigate("/map");
-      console.log("hello " + currentUser); // delete later
+      console.log("hello, " + currentUser);
     } else {
-      setActiveModal(Modals.Login);
+      setActiveModal(Modals.SignUp);
     }
   }
 

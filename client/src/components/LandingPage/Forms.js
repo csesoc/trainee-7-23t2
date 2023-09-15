@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { testUsers } from "./TestUsers";
 import React from "react";
 
 const Modals = {
@@ -7,6 +6,14 @@ const Modals = {
     Login: "logIn",
     None: "None"
 }
+
+// Retreive user info from local storage
+
+if (localStorage.getItem("user info") === null) {
+    localStorage.setItem("user info", "[]");
+}
+
+let users = JSON.parse(localStorage.getItem("user info"));
 
 const LoginForm = ({ activeModal = Modals.None }) => {
 
@@ -25,12 +32,12 @@ const LoginForm = ({ activeModal = Modals.None }) => {
         let inputPassword = passwordRef.current.value;
         let loggedIn = false;
 
-        testUsers.forEach(user => {
-            if (user.Username === inputUsername && user.Password === inputPassword) { 
-                localStorage.setItem("Current user", inputUsername);
+        users.forEach(user => {
+            if (user.username === inputUsername && user.password === inputPassword) { 
+                localStorage.setItem("current user", inputUsername);
                 loggedIn = true;
                 navigate("/map");
-                console.log("hello " + inputUsername); // delete later
+                console.log("hello, " + inputUsername);
             }
         });
 
@@ -78,7 +85,7 @@ const SignUpForm = ({ activeModal = Modals.None }) => {
     const confirmPassRef = React.useRef();
 
     function handleSubmit(e) {
-        // todo: create a new user and add to some sort of database
+
         e.preventDefault();
 
         let inputUsername = usernameRef.current.value;
@@ -92,8 +99,8 @@ const SignUpForm = ({ activeModal = Modals.None }) => {
             signUpErrorRef.current.className = "error-message";
             return;
         }
-        testUsers.forEach(user => {
-            if (inputUsername === user.Username) {
+        users.forEach(user => {
+            if (inputUsername === user.username) {
                 usernameExists = true;
             }
         });
@@ -104,8 +111,17 @@ const SignUpForm = ({ activeModal = Modals.None }) => {
         }
 
         // Sign up successful!
-        localStorage.setItem("Current user", inputUsername);
-        console.log("hello " + inputUsername); // delete later
+        localStorage.setItem("current user", inputUsername);
+
+        // Add into users local storage
+        let newUser = {
+            username: inputUsername,
+            password: inputPassword
+        }
+        users.push(newUser);
+        localStorage.setItem("user info", JSON.stringify(users));
+
+        console.log("hello, " + inputUsername);
         navigate("/map");
     }
 
