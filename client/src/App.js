@@ -1,3 +1,5 @@
+// import logo from "./logo.svg";
+
 import "./App.css";
 import LandingPage from "./components/LandingPage/LandingPage";
 import MainPage from "./components/MainPage/MainPage";

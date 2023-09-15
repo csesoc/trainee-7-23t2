@@ -7,11 +7,12 @@ import Map from "./Map.js"
 import React, { useState } from "react";
 import Modal from "./Modal";
 
+
 const MainPage = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [selectedContent, setSelectedContent] = useState("addFriends");
   const [openModal, setOpenModal] = useState(false);
-
+  
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
