@@ -14,6 +14,7 @@ nav {
 nav>button {
     border: none;
     font-size: 16px;
+    font-family: 'Baumans', cursive;
 }
 
 #nav-log-in {
@@ -58,14 +59,17 @@ nav>button {
 #title>h1 {
     font-size: 64px;
     color: #504343;
+    font-family: 'Baumans', cursive;
 }
 
 #title>button {
     border: none;
     background-color: #5891E5;
-    color: white;
 
+    color: white;
     font-size: 18px;
+    font-family: 'Baumans', cursive;
+
     padding: 15px 60px 15px 60px;
     border-radius: 5px;
 }
@@ -105,6 +109,7 @@ nav>button {
 .modal>h2 {
     text-align: center;
     margin: 30px 0px 10px 0px;
+    font-family: 'Baumans', cursive;
 }
 
 .error-message {
@@ -125,6 +130,7 @@ nav>button {
 
 .form-input>div>p {
     font-size: 16px;
+    font-family: 'Baumans', cursive;
     margin: 20px 0px 10px 0px;
 }
 
@@ -151,17 +157,13 @@ nav>button {
     border-radius: 5px;
     margin: 50px 0px 30px 0px;
     font-size: 18px;
+    font-family: 'Baumans', cursive;
     color: white;
 }
 
 .submit-button:hover {
     cursor: pointer;
     background-color: #3d6cb8;
-}
-
-.submit-button:focus {
-    cursor: pointer;
-    background-color: #2f5490;
 }
 
 .grey-out {

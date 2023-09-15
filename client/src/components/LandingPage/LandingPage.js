@@ -20,12 +20,13 @@ const LandingPage = () => {
 
   // Clicking on the "start searching!" button
   function handleSearchClick() {
-
-    // todo: check whether the user's signed in
-    // if user's signed in before, take them to map
-    // if not, chuck in setActiveModal(Modals.SignUp)
-
-    navigate("/map");
+    let currentUser = localStorage.getItem("Current user");
+    if (currentUser !== null) {
+      navigate("/map");
+      console.log("hello " + currentUser);
+    } else {
+      setActiveModal(Modals.Login);
+    }
   }
 
   // Making the pop ups appear/disappear
@@ -36,6 +37,10 @@ const LandingPage = () => {
     setActiveModal(Modals.SignUp);
   }
   function handleGreyOutClick() {
+    let errorText = document.getElementsByClassName("error-message");
+    for (let i = 0; i < errorText.length; i++) {
+      errorText[i].className = "error-message invisible";
+    }
     setActiveModal(Modals.None);
   }
 
@@ -46,7 +51,7 @@ const LandingPage = () => {
         <button id="nav-sign-up" onClick={handleSignUpClick}>Sign up</button>
       </nav>
       <div id="title">
-        <h1>find your friends</h1>
+        <h1>Find your friends</h1>
         <button className="title-button" onClick={handleSearchClick}>Start searching!</button>
       </div>
       <LoginForm activeModal={activeModal} />

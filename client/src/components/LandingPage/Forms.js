@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { testUsers } from "./TestUsers";
+import React from "react";
 
 const Modals = {
     SignUp: "signUp",
@@ -6,37 +8,59 @@ const Modals = {
     None: "None"
 }
 
-const FormInput = ({ inputName = "Input", inputType = "text" }) => {
-    return (
-        <div>
-            <p>{inputName}</p>
-            <input type={inputType}></input>
-        </div>
-    );
-}
-
 const LoginForm = ({ activeModal = Modals.None }) => {
 
+    // Initialise constants
     let loginClassName = (activeModal === Modals.Login) ? "modal" : "modal invisible";
     let navigate = useNavigate();
+    const loginErrorRef = React.useRef();
+    const usernameRef = React.useRef();
+    const passwordRef = React.useRef();
 
-    function handleSubmit() {
-        // todo: log the user in 
-        navigate("/map");
+    function handleSubmit(e) {
+
+        e.preventDefault();
+
+        let inputUsername = usernameRef.current.value;
+        let inputPassword = passwordRef.current.value;
+        let loggedIn = false;
+
+        testUsers.forEach(user => {
+            if (user.Username === inputUsername && user.Password === inputPassword) { 
+                localStorage.setItem("Current user", inputUsername);
+                loggedIn = true;
+                navigate("/map");
+                console.log("hello " + inputUsername); // delete later
+            }
+        });
+
+        // If the login details don't match any existing user
+        if (loggedIn === false) {
+            loginErrorRef.current.textContent = "Error: the login details are incorrect";
+            loginErrorRef.current.className = "error-message";
+        }
     }
     
     return (
         <div className={loginClassName}>
             <h2>Login</h2>
-            <p className="error-message invisible">Error message</p>
+            <p className="error-message invisible" ref={loginErrorRef}>Error message</p>
             <form className="form-input">
-                <FormInput inputName="Username" />
-                <FormInput inputName="Password" inputType="password" />
+
+                <div>
+                    <p>Username</p>
+                    <input type="text" ref={usernameRef}></input>
+                </div>
+                <div>
+                    <p>Password</p>
+                    <input type="password" ref={passwordRef}></input>
+                </div>
+
                 <input
                     type="submit"
                     className="submit-button"
                     value="Log in"
-                    onClick={handleSubmit} // todo: change to onSubmit once the form's connected
+                    onClick={handleSubmit}
                 ></input>
             </form>
         </div>
@@ -45,27 +69,68 @@ const LoginForm = ({ activeModal = Modals.None }) => {
 
 const SignUpForm = ({ activeModal = Modals.None }) => {
 
+    // Initialise constants
     let signinClassName = (activeModal === Modals.SignUp) ? "modal" : "modal invisible";
     let navigate = useNavigate();
+    const signUpErrorRef = React.useRef();
+    const usernameRef = React.useRef();
+    const passwordRef = React.useRef();
+    const confirmPassRef = React.useRef();
 
-    function handleSubmit() {
-        // todo: create a new user and log them in
+    function handleSubmit(e) {
+        // todo: create a new user and add to some sort of database
+        e.preventDefault();
+
+        let inputUsername = usernameRef.current.value;
+        let inputPassword = passwordRef.current.value;
+        let inputConfirm = confirmPassRef.current.value;
+        let usernameExists = false;
+
+        // Error handling
+        if (inputPassword !== inputConfirm) {
+            signUpErrorRef.current.textContent = "Error: the passwords don't match";
+            signUpErrorRef.current.className = "error-message";
+            return;
+        }
+        testUsers.forEach(user => {
+            if (inputUsername === user.Username) {
+                usernameExists = true;
+            }
+        });
+        if (usernameExists) {
+            signUpErrorRef.current.textContent = "Error: the username \"" + inputUsername + "\" has already been taken";
+            signUpErrorRef.current.className = "error-message";
+            return;
+        }
+
+        // Sign up successful!
+        localStorage.setItem("Current user", inputUsername);
+        console.log("hello " + inputUsername); // delete later
         navigate("/map");
     }
 
     return (
         <div className={signinClassName}>
             <h2>Sign up</h2>
-            <p className="error-message invisible">Error message</p>
+            <p className="error-message invisible" ref={signUpErrorRef}>Error message</p>
             <form className="form-input">
-                <FormInput inputName="Username" />
-                <FormInput inputName="Password" inputType="password" />
-                <FormInput inputName="Confirm password" inputType="password" />
+                <div>
+                    <p>Username</p>
+                    <input type="text" ref={usernameRef}></input>
+                </div>
+                <div>
+                    <p>Password</p>
+                    <input type="password" ref={passwordRef}></input>
+                </div>
+                <div>
+                    <p>Confirm password</p>
+                    <input type="password" ref={confirmPassRef}></input>
+                </div>
                 <input
                     type="submit"
                     className="submit-button"
                     value="Sign up"
-                    onClick={handleSubmit} // todo: change to onSubmit once the form's connected
+                    onClick={handleSubmit}
                 ></input>
             </form>
         </div>
