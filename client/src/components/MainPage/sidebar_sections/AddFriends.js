@@ -1,7 +1,9 @@
 // AddFriends.js
-import React from "react";
+import React, { useState } from "react";
 
 const AddFriends = () => {
+  const [friends, setFriends] = useState([]);
+
   return (
     <div>
       <div className="pageType">
