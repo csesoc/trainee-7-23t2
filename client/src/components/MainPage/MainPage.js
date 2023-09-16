@@ -10,7 +10,6 @@ import Modal from "./Modal";
 const MainPage = ({ activeUser, users }) => {
   
   console.log("hello, " + activeUser.name + "!");
-  console.log(users);
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [selectedContent, setSelectedContent] = useState("addFriends");

@@ -36,6 +36,18 @@ const LoginForm = ({ activeModal = Modals.None, updateActiveUser }) => {
             }
         });
 
+        // Empty inputs
+        if (inputUsername.length === 0) { 
+            loginErrorRef.current.textContent = "Error: Please enter your username";
+            loginErrorRef.current.className = "error-message";
+            return;
+        }
+        if (inputPassword.length === 0) {
+            loginErrorRef.current.textContent = "Error: Please enter your password";
+            loginErrorRef.current.className = "error-message";
+            return;
+        }
+
         // If the login details don't match any existing user
         if (loggedIn === false) {
             loginErrorRef.current.textContent = "Error: the login details are incorrect";
@@ -96,10 +108,22 @@ const SignUpForm = ({ activeModal = Modals.None, updateActiveUser, updateUsers }
 
         // Error handling
         if (inputPassword !== inputConfirm) {
-            signUpErrorRef.current.textContent = "Error: the passwords don't match";
+            signUpErrorRef.current.textContent = "Error: the passwords do not match";
             signUpErrorRef.current.className = "error-message";
             return;
         }
+        // Empty inputs
+        if (inputUsername.length === 0) {
+            signUpErrorRef.current.textContent = "Error: Please enter your username";
+            signUpErrorRef.current.className = "error-message";
+            return;
+        }
+        if (inputPassword.length === 0) {
+            signUpErrorRef.current.textContent = "Error: Please enter your password";
+            signUpErrorRef.current.className = "error-message";
+            return;
+        }
+        
         usersArray.forEach(user => {
             if (inputUsername === user.username) {
                 usernameExists = true;
