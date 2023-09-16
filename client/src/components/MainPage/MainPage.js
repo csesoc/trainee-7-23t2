@@ -1,41 +1,61 @@
 import "./MainPage.css";
+import "./SideBar.js";
+import AddFriends from "./sidebar_sections/AddFriends";
+import FindFriends from "./sidebar_sections/FindFriends";
+import FriendRequests from "./sidebar_sections/FriendRequests";
+import Map from "./Map.js"
+import React, { useState } from "react";
+import Modal from "./Modal";
+
 
 const MainPage = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [selectedContent, setSelectedContent] = useState("addFriends");
+  const [openModal, setOpenModal] = useState(false);
+  
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleIconClick = (content) => {
+    setSelectedContent(content);
+    setIsSidebarOpen(true);
+  };
+
+  const renderSidebarContent = () => {
+    switch (selectedContent) {
+      case "addFriends":
+        return <AddFriends />;
+      case "findFriends":
+        return <FindFriends />;
+      case "friendRequests":
+        return <FriendRequests />;
+      default:
+        return null;
+    }
+  };
+
   return (
-    <div class="wrapper">
-      <div class="sidebar">
-        <div class="iconBar">
-          <ul class="icons">
-            <a href="#Friends">👥</a>
-            <a href="#findFriends">🔍</a>
-            <a href="#inbox">📩</a>
-            <a href="#settingsPage">🔧</a>
-          </ul>
-        </div>
-        <div class="pageType">
-          <h3>Add Friends</h3>
-        </div>
-        <div class="search">
-          <form action="#">
-            <input type="text"
-              placeholder=" Search..."
-              name="search"/>
-            <button>
-              🔍
-            </button>
-          </form>
-        </div>
-        <ul class="listPeople">
-          <li class="person">
-            {/* temporary */}
-            <span class="dot"></span>
-            <h3>Name</h3>
-            <p>Status</p>
-          </li>
+    <div className={`wrapper ${isSidebarOpen ? "" : "collapsed"}`}>       
+      <div class="iconBar">
+        <button onClick={toggleSidebar} class="close">
+          ☰
+        </button>
+        <ul class="icons">
+          <a href="#"  onClick={() => handleIconClick("addFriends")}>👥</a>
+          <a href="#" onClick={() => handleIconClick("findFriends")} >🔍</a>
+          <a href="#" onClick={() => handleIconClick("friendRequests")} >📩</a>
+          <a href="#" onClick={() => setOpenModal(true)} >🔧</a>
         </ul>
       </div>
+
+      <div className={`sidebar ${isSidebarOpen ? "" : "collapsed"}`} id="mySidenav">
+        {renderSidebarContent()}
+      </div>
+      
       <div class="map">
-        <p>this is the map</p>
+        <Map />
+        {openModal && <Modal closeModal={setOpenModal}/>}
       </div>
     </div>
   );

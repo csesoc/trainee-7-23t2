@@ -1,52 +1,90 @@
-html {
-    height: 100%;
-    box-sizing: border-box;
-}
-
-body {
+html, body {
     height: 100%;
     width: 100%;
-}
-
-*,
-*::before,
-*::after{
-    box-sizing: inherit;
     margin: 0;
     padding: 0;
 }
 
 .wrapper {
-    display:inline-flex;
-    width: 100%;
     height: 100vh;
+    width: 100vw;
+    display: flex;
+    
+    transition: 1s ease;
+}
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.popbar {
+    width: 30%;
+    height: 100%;
+    transition: 1s ease;
+    position: relative;
 }
 
 .sidebar {
-    width: 30%;
+    width: 40%;
     height: 100%; 
-    z-index: 1;
     top: 0;
     left: 0;
     background-color: rgb(206, 240, 253);
+
+    transition: 1s ease;
+
+    padding-left: 60px;
+
+    overflow-y: auto;
+}
+
+.collapsed .sidebar {
+    width: 0;
+    overflow: hidden;
+}
+
+.close {
+    background-color: skyblue;
+    color: #f2f2f2;
+    float: left;
+    padding: 5px;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
 }
 
 .iconBar {
+    width: 60px;
     background-color: skyblue;
     overflow: auto;
-    width: flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: fixed;
+    height: 100%;
 }
 
-.iconBar a {
+.icons {
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+}
+
+.icons a {
     display: block;
     color: rgb(199, 190, 15);
     text-align: center;
     padding: 14px 14px;
     text-decoration: none;
     font-size: x-large;
-    float: left;
-    width: 25%;
-  
+    width: 100%;
+
     transition: 0.3s;
 }
 
@@ -54,6 +92,7 @@ body {
     color: rgba(255, 255, 255, 0.331);
     text-shadow: 0 0px 0px rgb(255, 255, 255);
     transition: 0.3s;
+    cursor: pointer;
 }
 
 /* do this later */
@@ -69,29 +108,38 @@ body {
 }
 
 .search input[type=text]{
-    width: 320px;
+    flex: 1;
+    width: 100%;
     height: 25px;
     border-radius: 25px;
     padding: 10px;
     border: none;
+    vertical-align: middle;
 }
      
 .search{
+    align-items: center;
     margin-left: 20px;
     margin-top: 10px;
     margin-right: 20px;
 }
-     
+/*      
 .search button{
     background-color: skyblue;
     color: #f2f2f2;
     float: right;
     padding: 5px;
-    margin-left: 10px;
     font-size: 12px;
     border: none;
     cursor: pointer;
     border-radius: 50%;
+    vertical-align: middle;
+} */
+
+.pageType, .person h3, .person p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .listPeople {
@@ -102,19 +150,119 @@ body {
     list-style-type: none;
     background-color: white;
     border-radius: 10px;
-    padding: 20px;
+    padding: 5px;
     height: 110px;
+    margin-bottom: 10px;
+    display: inline-flex;
+    width: 100%;
+}
+
+p {
+    font-size: 15px;
 }
 
 .dot {
-    height: 70px;
+    height: 70%;
     width: 70px;
     background-color: #bbb;
     border-radius: 50%;
     float: left;
-    margin-right: 20px;
+    margin: 15px 20px 20px 20px;
+}
+
+.addButton {   
+    height: 100%;
+    width: 10%;
+    margin-left: 10px;
+    background-color: #4B91D2;
+    border-radius: 10%;
+    float: right;
+    margin-left: auto;
+    border-color: transparent;
+
+    text-align: center;
+    font-weight: 1000;
+    font-size: 30px;
+    color: white;
+
+    transition: 0.5s;
+}
+
+.addButton:hover{
+    transition: 0.5s;
+    background-color: #5081af;
+    cursor: pointer;
+}
+
+.personDetails {
+    margin-left: 2%;
+    margin-top: 15px;
+    color: #7A91A6;
+    font-size: 20px;
+}
+
+.friendRequestContainer {
+    height: 100%;
+    float: right;
+    width: 70%;
+    
+}
+
+.personRequestButtons {
+    display: inline-flex;
+}
+
+.acceptRequest {
+    color: white;
+    border: transparent;
+    border-radius: 5px;
+    font-size: 13px;
+    background-color: #4B91D2;
+    margin-top: 10px;
+    padding: 7% 20% 7% 20%;
+    text-align: center;
+
+    transition: 0.5s;
+}
+
+.acceptRequest:hover {
+    transition: 0.5s;
+    background-color: #5081af;
+    cursor: pointer;
+}
+
+.declineRequest {
+    color: white;
+    border: transparent;
+    border-radius: 5px;
+    font-size: 13px;
+    background-color: #98AFC5;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 7% 20% 7% 20%;
+    text-align: center;
+    
+    transition: 0.5s;
+}
+
+.declineRequest:hover {
+    transition: 0.5s;
+    background-color: red;
+    cursor: pointer;
 }
 
 .map {
-    background-color: rgb(222, 222, 222);
+    width: 100%;
+}
+    
+::-webkit-scrollbar {
+    width: 20px;
+  }
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 10px skyblue;
+}
+
+::-webkit-scrollbar-thumb {
+    background: white;
 }
