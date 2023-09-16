@@ -8,14 +8,12 @@ const Modals = {
 }
 
 // Retreive user info from local storage
-
 if (localStorage.getItem("user info") === null) {
     localStorage.setItem("user info", "[]");
 }
+let usersArray = JSON.parse(localStorage.getItem("user info"));
 
-let users = JSON.parse(localStorage.getItem("user info"));
-
-const LoginForm = ({ activeModal = Modals.None }) => {
+const LoginForm = ({ activeModal = Modals.None, updateActiveUser }) => {
 
     // Initialise constants
     let loginClassName = (activeModal === Modals.Login) ? "modal" : "modal invisible";
@@ -32,20 +30,35 @@ const LoginForm = ({ activeModal = Modals.None }) => {
         let inputPassword = passwordRef.current.value;
         let loggedIn = false;
 
-        users.forEach(user => {
+        usersArray.forEach(user => {
             if (user.username === inputUsername && user.password === inputPassword) { 
-                localStorage.setItem("current user", inputUsername);
                 loggedIn = true;
-                navigate("/map");
-                console.log("hello, " + inputUsername);
             }
         });
+
+        // Empty inputs
+        if (inputUsername.length === 0) { 
+            loginErrorRef.current.textContent = "Error: Please enter your username";
+            loginErrorRef.current.className = "error-message";
+            return;
+        }
+        if (inputPassword.length === 0) {
+            loginErrorRef.current.textContent = "Error: Please enter your password";
+            loginErrorRef.current.className = "error-message";
+            return;
+        }
 
         // If the login details don't match any existing user
         if (loggedIn === false) {
             loginErrorRef.current.textContent = "Error: the login details are incorrect";
             loginErrorRef.current.className = "error-message";
-        }
+            return;
+        } 
+
+        // Loggged in successfully!
+        localStorage.setItem("current user", inputUsername)
+        updateActiveUser(inputUsername);
+        navigate("/map");
     }
     
     return (
@@ -74,7 +87,7 @@ const LoginForm = ({ activeModal = Modals.None }) => {
     );
 };
 
-const SignUpForm = ({ activeModal = Modals.None }) => {
+const SignUpForm = ({ activeModal = Modals.None, updateActiveUser, updateUsers }) => {
 
     // Initialise constants
     let signinClassName = (activeModal === Modals.SignUp) ? "modal" : "modal invisible";
@@ -95,11 +108,23 @@ const SignUpForm = ({ activeModal = Modals.None }) => {
 
         // Error handling
         if (inputPassword !== inputConfirm) {
-            signUpErrorRef.current.textContent = "Error: the passwords don't match";
+            signUpErrorRef.current.textContent = "Error: the passwords do not match";
             signUpErrorRef.current.className = "error-message";
             return;
         }
-        users.forEach(user => {
+        // Empty inputs
+        if (inputUsername.length === 0) {
+            signUpErrorRef.current.textContent = "Error: Please enter your username";
+            signUpErrorRef.current.className = "error-message";
+            return;
+        }
+        if (inputPassword.length === 0) {
+            signUpErrorRef.current.textContent = "Error: Please enter your password";
+            signUpErrorRef.current.className = "error-message";
+            return;
+        }
+        
+        usersArray.forEach(user => {
             if (inputUsername === user.username) {
                 usernameExists = true;
             }
@@ -112,16 +137,17 @@ const SignUpForm = ({ activeModal = Modals.None }) => {
 
         // Sign up successful!
         localStorage.setItem("current user", inputUsername);
+        updateActiveUser(inputUsername, inputPassword, "online", 0, 0);
 
         // Add into users local storage
         let newUser = {
             username: inputUsername,
             password: inputPassword
         }
-        users.push(newUser);
-        localStorage.setItem("user info", JSON.stringify(users));
+        usersArray.push(newUser);
+        localStorage.setItem("user info", JSON.stringify(usersArray));
+        updateUsers(usersArray);
 
-        console.log("hello, " + inputUsername);
         navigate("/map");
     }
 

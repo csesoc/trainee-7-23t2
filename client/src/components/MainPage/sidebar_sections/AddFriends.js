@@ -1,7 +1,9 @@
 // AddFriends.js
-import React from "react";
+import React, { useState } from "react";
 
 const AddFriends = () => {
+  const [friends, setFriends] = useState([]);
+
   return (
     <div>
       <div className="pageType">
@@ -21,24 +23,15 @@ const AddFriends = () => {
       </div>
 
       <ul className="listPeople">
-        <li className="person">
-          <span className="dot"></span>
-          <div className="personDetails">
-            <h3>Name</h3>
-            <p>Status</p>
-
-          </div>
-          
-        </li>
-        <li className="person">
-          <span className="dot"></span>
-          <div className="personDetails">
-            <h3>Name</h3>
-            <p>Status</p>
-
-          </div>
-          
-        </li>
+        {friends.map((friend, index) => (
+          <li className="person" key={index}>
+            <img src={friend.pfp} className="dot"/>
+            <div className="personDetails">
+              <h3>{friend.name}</h3>
+              <p>Status: {friend.status}</p>
+            </div>
+          </li>
+        ))}
         {/* Additional list items for friends */}
       </ul>
     </div>

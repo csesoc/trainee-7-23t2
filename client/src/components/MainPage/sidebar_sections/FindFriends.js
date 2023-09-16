@@ -1,7 +1,23 @@
 // FindFriends.js
-import React from "react";
+import React, { useState } from "react";
+import henry from "../../../img/Henry.png"
+import joshi from "../../../img/Joshi.png"
 
 const FindFriends = () => {
+  const [friendStatus, setFriendStatus] = useState({});
+
+  const people = [
+    { id: 1, name: "Henry Guo", bio: "i love lunch 😋", pfp: henry},
+    { id: 2, name: "Joshi Ha", bio: "bio", pfp: joshi},
+  ];
+
+  const toggleFriendStatus = (name) => {
+    setFriendStatus({
+      ...friendStatus,
+      [name]: !friendStatus[name],
+    });
+  };
+
   return (
     <div>
       <div className="pageType">
@@ -21,29 +37,21 @@ const FindFriends = () => {
       </div>
 
       <ul className="listPeople">
-      <li className="person">
-          <span className="dot"></span>
-          <div className="personDetails">
-            <h3>Henry Guo</h3>
-            <p>i love lunch 😋</p>
-
-          </div>
-          <button className="addButton" onClick={() => {}}>+</button>
-
-          
-        </li>
-        <li className="person">
-          <span className="dot"></span>
-          <div className="personDetails">
-            <h3>Joshi Ha</h3>
-            <p>bio</p>
-
-          </div>
-          <button className="addButton" onClick={() => {}}>+</button>
-
-          
-        </li>
-        
+        {people.map((person) => (
+          <li className="person" key={person.id}>
+            <img src={person.pfp} className="dot"/>
+            <div className="personDetails">
+              <h3>{person.name}</h3>
+              <p>{person.bio}</p>
+            </div>
+            <button
+              className={`addButton ${friendStatus[person.name] ? "removeColor" : ""}`}
+              onClick={() => toggleFriendStatus(person.name)}
+            >
+              {friendStatus[person.name] ? "✖" : "+"}
+            </button>
+          </li>
+        ))}
       </ul>
     </div>
   );
