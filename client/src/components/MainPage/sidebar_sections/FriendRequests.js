@@ -29,14 +29,17 @@ const Inbox = () => {
       setFilteredRequests(pendingRequests);
       return;
     }
-    let filteredRequestsArr = [];
-    pendingRequests.forEach((request) => {
+    let filteredArr = [];
+    pendingRequests.forEach((user) => {
 
-      if (request.name.includes(searchInput)) {
-        filteredRequestsArr.push(request);
+      let userName = user.name.toLowerCase();
+      let inputName = searchInput.toLowerCase();
+
+      if (userName.includes(inputName)) {
+        filteredArr.push(user);
       }
     });
-    setFilteredRequests(filteredRequestsArr);
+    setFilteredRequests(filteredArr);
   }
 
   return (
