@@ -1,7 +1,23 @@
 // Inbox.js
-import React from "react";
+import React, { useState } from "react";
 
 const Inbox = () => {
+  const [pendingRequests, setPendingRequests] = useState([
+    { id: 1, name: "Person 1" },
+    { id: 2, name: "Person 2" },
+    { id: 3, name: "Person 3" },
+  ]);
+
+  const acceptRequest = (id) => {
+    const updatedRequests = pendingRequests.filter((request) => request.id !== id);
+    setPendingRequests(updatedRequests);
+  };
+
+  const declineRequest = (id) => {
+    const updatedRequests = pendingRequests.filter((request) => request.id !== id);
+    setPendingRequests(updatedRequests);
+  };
+
   return (
     <div className="inbox">
       <div className="pageType">
@@ -21,27 +37,28 @@ const Inbox = () => {
       </div>
 
       <ul className="listPeople">
-        <li className="person">
-          <span className="dot"></span>
-          <div className="personDetails">
-            <h3>Name</h3> 
-            <div className="personRequestButtons">
-              <button onClick={() => {}} className="acceptRequest">Accept</button>
-              <button onClick={() => {}} className="declineRequest">Decline</button>
+        {pendingRequests.map((request) => (
+          <li className="person" key={request.id}>
+            <span className="dot"></span>
+            <div className="personDetails">
+              <h3>{request.name}</h3>
+              <div className="personRequestButtons">
+                <button
+                  onClick={() => acceptRequest(request.id)}
+                  className="acceptRequest"
+                >
+                  Accept
+                </button>
+                <button
+                  onClick={() => declineRequest(request.id)}
+                  className="declineRequest"
+                >
+                  Decline
+                </button>
+              </div>
             </div>
-          </div>
-        </li>
-        <li className="person">
-          <span className="dot"></span>
-          <div className="personDetails">
-            <h3>Name</h3> 
-            <div className="personRequestButtons">
-              <button onClick={() => {}} className="acceptRequest">Accept</button>
-              <button onClick={() => {}} className="declineRequest">Decline</button>
-            </div>
-          </div>
-        </li>
-        {/* Additional list items for friends */}
+          </li>
+        ))}
       </ul>
     </div>
   );

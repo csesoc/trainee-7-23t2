@@ -269,3 +269,11 @@ p {
 ::-webkit-scrollbar-thumb {
     background: white;
 }
+
+.removeColor {
+    background-color: red;
+}
+
+.removeColor:hover {
+    background-color: rgb(145, 6, 6);
+}
