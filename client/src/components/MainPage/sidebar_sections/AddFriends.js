@@ -9,18 +9,7 @@ const AddFriends = () => {
       <div className="pageType">
         <h3>Friends List</h3>
       </div>
-      <div className="search">
-        <form action="#">
-          <input
-            type="text"
-            placeholder="Search..."
-            name="search"
-          />
-          {/* <button>
-            🔍
-          </button> */}
-        </form>
-      </div>
+      
 
       <ul className="listPeople">
         {friends.map((friend, index) => (

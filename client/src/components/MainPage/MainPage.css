@@ -107,34 +107,48 @@ html, body {
     font-size: x-large;
 }
 
-.search input[type=text]{
-    flex: 1;
-    width: 100%;
-    height: 25px;
-    border-radius: 25px;
-    padding: 10px;
-    border: none;
-    vertical-align: middle;
-}
-     
-.search{
+.search {
+    display: flex;
+    flex-direction: row;
     align-items: center;
+
     margin-left: 20px;
     margin-top: 10px;
     margin-right: 20px;
 }
-/*      
-.search button{
+
+.search > form {
+    width: 100%;
+}
+
+.search input[type=text]{
+    width: 100%;
+    height: 25px;
+    border-radius: 8px;
+    padding: 10px;
+    border: none;
+}
+
+.search input[type=text]:focus {
+    outline: none;
+    border: rgb(96, 136, 184) 1px solid;
+    padding: 9px;
+}
+
+.search img{
     background-color: skyblue;
-    color: #f2f2f2;
+    margin-left: 5px;
     float: right;
-    padding: 5px;
-    font-size: 12px;
     border: none;
     cursor: pointer;
-    border-radius: 50%;
-    vertical-align: middle;
-} */
+    width: 25px;
+    padding: 3px;
+    border-radius: 10px;
+} 
+
+.search img:hover {
+    background-color: rgb(96, 136, 184);
+}
 
 .pageType, .person h3, .person p {
     white-space: nowrap;
