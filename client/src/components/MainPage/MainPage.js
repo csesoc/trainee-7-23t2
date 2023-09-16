@@ -7,7 +7,10 @@ import Map from "./Map.js";
 import React, { useState } from "react";
 import Modal from "./Modal";
 
-const MainPage = () => {
+const MainPage = ({ activeUser, users }) => {
+  
+  console.log("hello, " + activeUser.name + "!");
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [selectedContent, setSelectedContent] = useState("addFriends");
   const [openModal, setOpenModal] = useState(false);

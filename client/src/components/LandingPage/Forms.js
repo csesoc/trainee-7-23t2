@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import React from "react";
 
 const Modals = {
@@ -8,12 +9,10 @@ const Modals = {
 }
 
 // Retreive user info from local storage
-
 if (localStorage.getItem("user info") === null) {
     localStorage.setItem("user info", "[]");
 }
-
-let users = JSON.parse(localStorage.getItem("user info"));
+let usersArray = JSON.parse(localStorage.getItem("user info"));
 
 const LoginForm = ({ activeModal = Modals.None }) => {
 
@@ -24,6 +23,15 @@ const LoginForm = ({ activeModal = Modals.None }) => {
     const usernameRef = React.useRef();
     const passwordRef = React.useRef();
 
+    const [activeUser, setActiveUser] = useState({
+        "name": undefined,
+        "password": undefined,
+        "status": undefined,
+        "lat": undefined,
+        "lng": undefined
+    });
+    const [users, setUsers] = useState([]);
+
     function handleSubmit(e) {
 
         e.preventDefault();
@@ -32,12 +40,9 @@ const LoginForm = ({ activeModal = Modals.None }) => {
         let inputPassword = passwordRef.current.value;
         let loggedIn = false;
 
-        users.forEach(user => {
+        usersArray.forEach(user => {
             if (user.username === inputUsername && user.password === inputPassword) { 
-                localStorage.setItem("current user", inputUsername);
                 loggedIn = true;
-                navigate("/map");
-                console.log("hello, " + inputUsername);
             }
         });
 
@@ -45,7 +50,20 @@ const LoginForm = ({ activeModal = Modals.None }) => {
         if (loggedIn === false) {
             loginErrorRef.current.textContent = "Error: the login details are incorrect";
             loginErrorRef.current.className = "error-message";
-        }
+            return;
+        // Loggged in successfully!
+        } 
+
+        localStorage.setItem("current user", inputUsername);
+        setActiveUser({
+            "name": inputUsername,
+            "password": inputPassword,
+            "status": "online",
+            "lat": 0,
+            "lng": 0
+        });
+
+        navigate("/map");
     }
     
     return (
@@ -84,6 +102,15 @@ const SignUpForm = ({ activeModal = Modals.None }) => {
     const passwordRef = React.useRef();
     const confirmPassRef = React.useRef();
 
+    const [activeUser, setActiveUser] = useState({
+        "name": undefined,
+        "password": undefined,
+        "status": undefined,
+        "lat": undefined,
+        "lng": undefined
+    });
+    const [users, setUsers] = useState([]);
+
     function handleSubmit(e) {
 
         e.preventDefault();
@@ -99,7 +126,7 @@ const SignUpForm = ({ activeModal = Modals.None }) => {
             signUpErrorRef.current.className = "error-message";
             return;
         }
-        users.forEach(user => {
+        usersArray.forEach(user => {
             if (inputUsername === user.username) {
                 usernameExists = true;
             }
@@ -112,16 +139,22 @@ const SignUpForm = ({ activeModal = Modals.None }) => {
 
         // Sign up successful!
         localStorage.setItem("current user", inputUsername);
+        setActiveUser({
+            "name": inputUsername,
+            "password": inputPassword,
+            "status": "online",
+            "lat": 0,
+            "lng": 0
+        });
 
         // Add into users local storage
         let newUser = {
             username: inputUsername,
             password: inputPassword
         }
-        users.push(newUser);
-        localStorage.setItem("user info", JSON.stringify(users));
+        usersArray.push(newUser);
+        localStorage.setItem("user info", JSON.stringify(usersArray));
 
-        console.log("hello, " + inputUsername);
         navigate("/map");
     }
 
