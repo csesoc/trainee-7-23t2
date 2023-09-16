@@ -9,12 +9,12 @@ import { GreyOut } from "./Forms";
 const Modals = {
   SignUp: "signUp",
   Login: "logIn",
-  None: "None"
-}
+  None: "None",
+};
 
 const LandingPage = () => {
-
-  const [activeModal, setActiveModal] = useState(0); 
+  const [activeModal, setActiveModal] = useState(0);
+  // const [loggedInUsers, setLoggedInUsers] = useState([{}, {}])
   let navigate = useNavigate();
 
   // Clicking on the "start searching!" button
@@ -45,13 +45,15 @@ const LandingPage = () => {
 
   return (
     <>
-      <nav>
+      <nav id="nav">
         <button id="nav-log-in" onClick={handleLogInClick}>Log in</button>
         <button id="nav-sign-up" onClick={handleSignUpClick}>Sign up</button>
       </nav>
       <div id="title">
         <h1>Find your friends</h1>
-        <button className="title-button" onClick={handleSearchClick}>Start searching!</button>
+        <button className="title-button" onClick={handleSearchClick}>
+          Start searching!
+        </button>
       </div>
       <LoginForm activeModal={activeModal} />
       <SignUpForm activeModal={activeModal} />

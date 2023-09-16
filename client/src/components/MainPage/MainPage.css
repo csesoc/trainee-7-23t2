@@ -157,6 +157,10 @@ html, body {
     width: 100%;
 }
 
+p {
+    font-size: 15px;
+}
+
 .dot {
     height: 70%;
     width: 70px;
@@ -169,6 +173,7 @@ html, body {
 .addButton {   
     height: 100%;
     width: 10%;
+    margin-left: 10px;
     background-color: #4B91D2;
     border-radius: 10%;
     float: right;
@@ -186,6 +191,7 @@ html, body {
 .addButton:hover{
     transition: 0.5s;
     background-color: #5081af;
+    cursor: pointer;
 }
 
 .personDetails {
@@ -222,6 +228,7 @@ html, body {
 .acceptRequest:hover {
     transition: 0.5s;
     background-color: #5081af;
+    cursor: pointer;
 }
 
 .declineRequest {
@@ -241,6 +248,7 @@ html, body {
 .declineRequest:hover {
     transition: 0.5s;
     background-color: red;
+    cursor: pointer;
 }
 
 .map {
@@ -252,7 +260,7 @@ html, body {
 
 ::-webkit-scrollbar {
     width: 20px;
-  }
+}
 
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 10px skyblue;

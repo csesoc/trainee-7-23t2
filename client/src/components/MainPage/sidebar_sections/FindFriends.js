@@ -24,8 +24,8 @@ const FindFriends = () => {
       <li className="person">
           <span className="dot"></span>
           <div className="personDetails">
-            <h3>Name</h3>
-            <p>Description/Bio</p>
+            <h3>Henry Guo</h3>
+            <p>i love lunch 😋</p>
 
           </div>
           <button className="addButton" onClick={() => {}}>+</button>
@@ -35,8 +35,8 @@ const FindFriends = () => {
         <li className="person">
           <span className="dot"></span>
           <div className="personDetails">
-            <h3>Name</h3>
-            <p>Description/Bio</p>
+            <h3>Joshi Ha</h3>
+            <p>bio</p>
 
           </div>
           <button className="addButton" onClick={() => {}}>+</button>
