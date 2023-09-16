@@ -64,7 +64,7 @@ const MainPage = ({ activeUser, users }) => {
           <a href="#" onClick={() => handleIconClick("friendRequests")}>
             📩
           </a>
-          <a href="#" onClick={() => setOpenModal(true)}>
+          <a href="#" onClick={() => setOpenModal(!openModal)}>
             🔧
           </a>
         </ul>
@@ -79,7 +79,7 @@ const MainPage = ({ activeUser, users }) => {
 
       <div class="map">
         <Map />
-        {openModal && <Modal closeModal={setOpenModal} />}
+        {openModal && <Modal closeModal={setOpenModal} activeUser={activeUser} />}
       </div>
     </div>
   );
