@@ -45,13 +45,9 @@ const LandingPage = () => {
 
   return (
     <>
-      <nav>
-        <button id="nav-log-in" onClick={handleLogInClick}>
-          Log in
-        </button>
-        <button id="nav-sign-up" onClick={handleSignUpClick}>
-          Sign up
-        </button>
+      <nav id="nav">
+        <button id="nav-log-in" onClick={handleLogInClick}>Log in</button>
+        <button id="nav-sign-up" onClick={handleSignUpClick}>Sign up</button>
       </nav>
       <div id="title">
         <h1>Find your friends</h1>
