@@ -1,32 +1,27 @@
 // FindFriends.js
 import React, { useState } from "react";
 
-const FindFriends = () => {
-  const [friendStatus, setFriendStatus] = useState({});
+const FindFriends = ({ friendsList, updateFriendsList, userList, updateUserList }) => {
 
-  const [friends, setFriends] = useState([
-    { id: 1, name: "Henry Guo", bio: "i love lunch 😋" },
-    { id: 2, name: "Joshi Ha", bio: "bio" },
-    { id: 3, name: "Anna", bio: "i live for lunch" },
-    { id: 4, name: "Bella", bio: "i LOVE lunch" },
-    { id: 5, name: "Annabella", bio: "i munch on lunch" }
-  ]);
+  let friendsTempArr = friendsList;
+  let findFriendsArr = [];
 
   // Filtering friend requests based on what's in the search bar
   const [filteredFriends, setFilteredFriends] = useState([]);
   const handleOnLoad = () => {
-    setFilteredFriends(friends);
+
+    setFilteredFriends(userList);
   }
   const handleChange = (e) => {
 
     let searchInput = e.target.value;
 
     if (searchInput.length === 0) {
-      setFilteredFriends(friends);
+      setFilteredFriends(userList);
       return;
     }
     let filteredArr = [];
-    friends.forEach((user) => {
+    userList.forEach((user) => {
       
       let userName = user.name.toLowerCase();
       let inputName = searchInput.toLowerCase();
@@ -35,14 +30,25 @@ const FindFriends = () => {
         filteredArr.push(user);
       }
     });
-    setFilteredFriends(filteredArr);  }
+    setFilteredFriends(filteredArr);
+  }
 
-  const toggleFriendStatus = (name) => {
-    setFriendStatus({
-      ...friendStatus,
-      [name]: !friendStatus[name],
+  const addFriend = (e) => {
+
+    let name = e.target.name;
+
+    userList.forEach((user) => {
+      if (name === user.name && friendsTempArr.indexOf(user) === -1) {
+        friendsTempArr.push(user);
+      } else if (findFriendsArr.indexOf(user) === -1) {
+        findFriendsArr.push(user);
+      }
     });
-  };
+
+    updateUserList(findFriendsArr);
+    setFilteredFriends(userList);
+    updateFriendsList(friendsTempArr);
+  }
 
   return (
     <div onLoad={handleOnLoad}>
@@ -70,10 +76,10 @@ const FindFriends = () => {
               <p>{person.bio}</p>
             </div>
             <button
-              className={`addButton ${friendStatus[person.name] ? "removeColor" : ""}`}
-              onClick={() => toggleFriendStatus(person.name)}
-            >
-              {friendStatus[person.name] ? "✖" : "+"}
+              className="addButton"
+              onClick={addFriend}
+              name={person.name}
+            >+
             </button>
           </li>
         ))}

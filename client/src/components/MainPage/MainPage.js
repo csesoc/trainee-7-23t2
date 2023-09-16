@@ -14,17 +14,25 @@ const MainPage = ({ activeUser, users }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [selectedContent, setSelectedContent] = useState("addFriends");
   const [openModal, setOpenModal] = useState(false);
-  const [friendsList, setFriendsList] = useState([]);
+  const [friendsList, setFriendsList] = useState([
+    { id: 1, name: "Peter", status: "online", bio: "i am a piper" },
+    { id: 2, name: "Pete", status: "online", bio: "i am a pipe" }
+  ]);
+  const [userList, setUserList] = useState([
+    { id: 1, name: "Henry Guo", status: "online", bio: "i love lunch 😋" },
+    { id: 2, name: "Joshi Ha", status: "online", bio: "bio" },
+    { id: 3, name: "Anna", status: "online", bio: "i live for lunch" },
+    { id: 4, name: "Bella", status: "online", bio: "i LOVE lunch" },
+    { id: 5, name: "Annabella", status: "online", bio: "i munch on lunch" }
+  ]);
 
-  /*
-    {
-      name: "Henry Guo",
-      password: "123jkl",
-      status: "online",
-      lat: -33.9173,
-      lng: 151.2313
-    }
-  */
+  const updateFriendsList = (newList) => {
+    setFriendsList(newList);
+  };
+
+  const updateUserList = (newList) => {
+    setUserList(newList);
+  };
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -38,11 +46,23 @@ const MainPage = ({ activeUser, users }) => {
   const renderSidebarContent = () => {
     switch (selectedContent) {
       case "addFriends":
-        return <AddFriends />;
+        return <AddFriends
+          friendsList={friendsList}
+        />;
       case "findFriends":
-        return <FindFriends />;
+        return <FindFriends
+          friendsList={friendsList}
+          updateFriendsList={updateFriendsList}
+          userList={userList}
+          updateUserList={updateUserList}
+        />;
       case "friendRequests":
-        return <FriendRequests />;
+        return <FriendRequests
+          friendsList={friendsList}
+          updateFriendsList={updateFriendsList}
+          userList={userList}
+          updateUserList={updateUserList}
+        />;
       default:
         return null;
     }
