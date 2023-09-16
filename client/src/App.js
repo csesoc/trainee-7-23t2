@@ -7,25 +7,14 @@ import "react-router-dom";
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-
-// const [loggedInUsers, setLoggedInUsers] = useState([{}, {}])
-// const [users, setUsers] = useState([
-//   {
-//     "name": "Henry Guo",
-//     "status": "online",
-//     "lat": -33.9173,
-//     "lng": 151.2313,
-// }
-// ])
-
-// const [friends, setFriends] = useState([])
-
 function App() {
 
   const [activeUser, setActiveUser] = useState({});
   const [users, setUsers] = useState([]);
 
-  const updateActiveUser = (name, password, status, lat, lng) => { 
+  const updateActiveUser = (name,
+    password = activeUser.password,
+    status = activeUser.status, lat = activeUser.lat, lng = activeUser.lng) => { 
     setActiveUser({
       "name": name,
       "password": password,
@@ -42,7 +31,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LandingPage updateActiveUser={updateActiveUser} updateUsers={updateUsers} />}></Route>
+        <Route path="/" element={<LandingPage activeUser={activeUser} updateActiveUser={updateActiveUser} updateUsers={updateUsers} />}></Route>
         <Route path="/map" element={<MainPage activeUser={activeUser} users={users} />}></Route>
       </Routes>
     </Router>

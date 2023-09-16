@@ -78,8 +78,8 @@ const LandingPage = ({ updateActiveUser, updateUsers}) => {
           Start searching!
         </button>
       </div>
-      <LoginForm activeModal={activeModal} activeUser={activeUser} setActiveUser={setActiveUser} />
-      <SignUpForm activeModal={activeModal} activeUser={activeUser} setActiveUser={setActiveUser} users={usersArray} setUsers={usersArray} />
+      <LoginForm activeModal={activeModal} updateActiveUser={updateActiveUser} />
+      <SignUpForm activeModal={activeModal} updateActiveUser={updateActiveUser} updateUsers={updateUsers} />
       <GreyOut activeModal={activeModal} onGreyClick={handleGreyOutClick} />
       <img src={require("../../img/front1.png")} alt="" id="left-img" />
       <img src={require("../../img/front2.png")} alt="" id="right-img" />

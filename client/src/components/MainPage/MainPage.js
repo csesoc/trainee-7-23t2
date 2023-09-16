@@ -10,6 +10,7 @@ import Modal from "./Modal";
 const MainPage = ({ activeUser, users }) => {
   
   console.log("hello, " + activeUser.name + "!");
+  console.log(users);
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [selectedContent, setSelectedContent] = useState("addFriends");
@@ -18,10 +19,11 @@ const MainPage = ({ activeUser, users }) => {
 
   /*
     {
-      name: "Henry Guo"
-      status: "online"
+      name: "Henry Guo",
+      password: "123jkl",
+      status: "online",
       lat: -33.9173,
-      lng: 151.2313,
+      lng: 151.2313
     }
   */
 
