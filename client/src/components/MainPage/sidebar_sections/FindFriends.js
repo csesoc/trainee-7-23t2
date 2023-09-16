@@ -3,14 +3,15 @@ import React, { useState } from "react";
 
 const FindFriends = ({ friendsList, updateFriendsList, userList, updateUserList }) => {
 
+  const [render, force] = useState(0);
   let friendsTempArr = friendsList;
   let findFriendsArr = [];
 
   // Filtering friend requests based on what's in the search bar
   const [filteredFriends, setFilteredFriends] = useState([]);
   const handleOnLoad = () => {
-
     setFilteredFriends(userList);
+    force(render + 1);
   }
   const handleChange = (e) => {
 
@@ -48,6 +49,7 @@ const FindFriends = ({ friendsList, updateFriendsList, userList, updateUserList 
     updateUserList(findFriendsArr);
     setFilteredFriends(userList);
     updateFriendsList(friendsTempArr);
+    force(render + 1);
   }
 
   return (
@@ -77,7 +79,7 @@ const FindFriends = ({ friendsList, updateFriendsList, userList, updateUserList 
             </div>
             <button
               className="addButton"
-              onClick={addFriend}
+              onClick={(e) => { addFriend(e); }}
               name={person.name}
             >+
             </button>

@@ -15,15 +15,21 @@ const MainPage = ({ activeUser, users }) => {
   const [selectedContent, setSelectedContent] = useState("addFriends");
   const [openModal, setOpenModal] = useState(false);
   const [friendsList, setFriendsList] = useState([
-    { id: 1, name: "Peter", status: "online", bio: "i am a piper" },
-    { id: 2, name: "Pete", status: "online", bio: "i am a pipe" }
+    { name: "Peter piper", status: "online", bio: "i am a piper" },
+    { name: "Pete", status: "online", bio: "i am a pipe" }
   ]);
   const [userList, setUserList] = useState([
-    { id: 1, name: "Henry Guo", status: "online", bio: "i love lunch 😋" },
-    { id: 2, name: "Joshi Ha", status: "online", bio: "bio" },
-    { id: 3, name: "Anna", status: "online", bio: "i live for lunch" },
-    { id: 4, name: "Bella", status: "online", bio: "i LOVE lunch" },
-    { id: 5, name: "Annabella", status: "online", bio: "i munch on lunch" }
+    { name: "Henry Guo", status: "pending request..", bio: "i love lunch 😋" },
+    { name: "Joshi Ha", status: "pending request..", bio: "bio" },
+    { name: "Anna", status: "pending request..", bio: "i live for lunch" },
+    { name: "Bella", status: "pending request..", bio: "i LOVE lunch" },
+    { name: "Annabella", status: "pending request..", bio: "i munch on lunch" }
+  ]);
+  const [requestList, setRequestList] = useState([
+    { name: "I'm", status: "online", bio: "i am a pipe" },
+    { name: "losing", status: "online", bio: "i am a pipe" },
+    { name: "my", status: "online", bio: "i am a pipe" },
+    { name: "brain cells", status: "online", bio: "i am a pipe" },
   ]);
 
   const updateFriendsList = (newList) => {
@@ -32,6 +38,10 @@ const MainPage = ({ activeUser, users }) => {
 
   const updateUserList = (newList) => {
     setUserList(newList);
+  };
+
+  const updateRequestList = (newList) => {
+    setRequestList(newList);
   };
 
   const toggleSidebar = () => {
@@ -60,8 +70,8 @@ const MainPage = ({ activeUser, users }) => {
         return <FriendRequests
           friendsList={friendsList}
           updateFriendsList={updateFriendsList}
-          userList={userList}
-          updateUserList={updateUserList}
+          requestList={requestList}
+          updateRequestList={updateRequestList}
         />;
       default:
         return null;
