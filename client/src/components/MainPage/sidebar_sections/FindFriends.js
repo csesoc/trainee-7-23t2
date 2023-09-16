@@ -16,7 +16,6 @@ const FindFriends = () => {
   const [filteredFriends, setFilteredFriends] = useState([]);
   const handleOnLoad = () => {
     setFilteredFriends(friends);
-    console.log(friends);
   }
   const handleChange = (e) => {
 
