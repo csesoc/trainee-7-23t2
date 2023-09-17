@@ -54,7 +54,7 @@ const AddFriends = ({friendsList}) => {
             <div className="personDetails">
               <h3>{friend.name}</h3>
               <p className="status"> Status:  
-                <p className={friend.status}> {friend.status}
+                <p className={friend.status.replace(/\s/g, "")}> {friend.status}
                 </p>
               </p>
 

@@ -243,7 +243,16 @@ p {
 .Available{
     color: green;
 }
-
+.InClass{
+    color: orange;
+}
+.Donotdisturb{
+    color: red;
+}
+.💀Doomed{
+    color: black;
+    font-weight: 1000;
+}
 
 .friendRequestContainer {
     height: 100%;
