@@ -12,6 +12,8 @@ import andrew from "../../img/Andrew.png"
 import henry from "../../img/Henry.png"
 import joshi from "../../img/Joshi.png"
 import kim from "../../img/kim.png"
+import joye from "../../img/Joye.png"
+import cat from "../../img/Cat.png"
 
 const MainPage = ({ activeUser, users }) => {
   
@@ -21,18 +23,20 @@ const MainPage = ({ activeUser, users }) => {
   const [selectedContent, setSelectedContent] = useState("addFriends");
   const [openModal, setOpenModal] = useState(false);
   const [friendsList, setFriendsList] = useState([
-    { name: "Calley", status: "Available", bio: "hi", lat: -33.9182245, lng: 151.2308635, pfp: calley },
+    { name: "Calley", status: "Available", bio: "¯\\_(ツ)_/¯", lat: -33.9182245, lng: 151.2308635, pfp: calley },
     { name: "Luke", status: "In Class", bio: "any baddies?", lat: -33.9170  , lng: 151.235, pfp: luke  },
     { name: "Andrew", status: "Do not disturb", bio: "my name is Andrew ;)",lat: -33.9189  , lng: 151.228, pfp: andrew  },
   ]);
   const [userList, setUserList] = useState([
-    { name: "Henry Guo", status: "pending request..", bio: "i love lunch 😋", pfp: henry},
+    { name: "Henry Guo", status: "pending request..", bio: "lts study tgt uwu 😋", pfp: henry},
     { name: "Joshi Ha", status: "pending request..", bio: "bio", pfp: joshi },
-    { name: "Anna", status: "pending request..", bio: "i live for lunch" },
-    { name: "Bella", status: "pending request..", bio: "i LOVE lunch" },
-    { name: "Annabella", status: "pending request..", bio: "i munch on lunch" }
+    
+    { name: "Anna", status: "pending request..", bio: "i live for lunch", pfp: cat },
+    { name: "Bella", status: "pending request..", bio: "i LOVE lunch", pfp: cat },
+    { name: "Annabella", status: "pending request..", bio: "i munch on lunch", pfp: cat }
   ]);
   const [requestList, setRequestList] = useState([
+    { name: "Joye", status: "💀 Doomed", bio: "rapid braincell loss", lat: -33.918, lng: 151.229 , pfp: joye },
     { name: "I'm", status: "💀 Doomed", bio: "i am a pipe", lat: -33.91823, lng: 151.233, pfp: kim },
     { name: "losing", status: "In Class", bio: "i am a pipe", lat: -33.9187, lng: 151.233, pfp: kim},
     { name: "my", status: "Available", bio: "i am a pipe", lat: -33.92, lng: 151.229 , pfp: kim },
