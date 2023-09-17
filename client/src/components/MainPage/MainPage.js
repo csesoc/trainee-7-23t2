@@ -11,6 +11,7 @@ import luke from "../../img/Luke.png"
 import andrew from "../../img/Andrew.png"
 import henry from "../../img/Henry.png"
 import joshi from "../../img/Joshi.png"
+import kim from "../../img/kim.png"
 
 const MainPage = ({ activeUser, users }) => {
   
@@ -32,10 +33,10 @@ const MainPage = ({ activeUser, users }) => {
     { name: "Annabella", status: "pending request..", bio: "i munch on lunch" }
   ]);
   const [requestList, setRequestList] = useState([
-    { name: "I'm", status: "💀 Doomed", bio: "i am a pipe", lat: -33.91823, lng: 151.233, pfp: luke },
-    { name: "losing", status: "In Class", bio: "i am a pipe", lat: -33.9187, lng: 151.233, pfp: luke},
-    { name: "my", status: "Available", bio: "i am a pipe", lat: -33.92, lng: 151.229 , pfp: luke },
-    { name: "brain cells", status: "Available", bio: "i am a pipe", lat: -33.9170, lng: 151.228, pfp: luke },
+    { name: "I'm", status: "💀 Doomed", bio: "i am a pipe", lat: -33.91823, lng: 151.233, pfp: kim },
+    { name: "losing", status: "In Class", bio: "i am a pipe", lat: -33.9187, lng: 151.233, pfp: kim},
+    { name: "my", status: "Available", bio: "i am a pipe", lat: -33.92, lng: 151.229 , pfp: kim },
+    { name: "brain cells", status: "Available", bio: "i am a pipe", lat: -33.9170, lng: 151.228, pfp: kim },
   ]);
 
   const updateFriendsList = (newList) => {
