@@ -1,36 +1,42 @@
 // Inbox.js
 import React, { useState } from "react";
 
-const Inbox = () => {
-  const [pendingRequests, setPendingRequests] = useState([
-    { id: 1, name: "Person 1" },
-    { id: 2, name: "Person 2" },
-    { id: 3, name: "Person 3" },
-  ]);
+const Inbox = ({ friendsList, updateFriendsList, requestList, updateRequestList }) => {
+  
+  const [render, force] = useState(0);
 
-  const acceptRequest = (id) => {
-    const updatedRequests = pendingRequests.filter((request) => request.id !== id);
-    setPendingRequests(updatedRequests);
+  let tempRequestList = requestList;
+  let tempFriendList = friendsList;
+
+  const acceptRequest = (user) => {
+    tempFriendList.push(user);
+    tempRequestList.splice(tempRequestList.indexOf(user), 1);
+    updateRequestList(tempRequestList);
+    updateFriendsList(tempFriendList);
+    force(render + 1);
   };
 
-  const declineRequest = (id) => {
-    const updatedRequests = pendingRequests.filter((request) => request.id !== id);
-    setPendingRequests(updatedRequests);
+  const declineRequest = (user) => {
+    tempRequestList.splice(tempRequestList.indexOf(user), 1);
+    updateRequestList(tempRequestList);
+    updateFriendsList(tempFriendList);
+    force(render + 1);
   };
 
   // Filtering friend requests based on what's in the search bar
   const [filteredRequests, setFilteredRequests] = useState([]);
   const handleOnLoad = () => {
-    setFilteredRequests(pendingRequests);
+    setFilteredRequests(requestList);
+    force(render + 1);
   }
   const handleChange = (e) => { 
     let searchInput = e.target.value;
     if (searchInput.length === 0) { 
-      setFilteredRequests(pendingRequests);
+      setFilteredRequests(requestList);
       return;
     }
     let filteredArr = [];
-    pendingRequests.forEach((user) => {
+    requestList.forEach((user) => {
 
       let userName = user.name.toLowerCase();
       let inputName = searchInput.toLowerCase();
@@ -39,6 +45,7 @@ const Inbox = () => {
         filteredArr.push(user);
       }
     });
+
     setFilteredRequests(filteredArr);
   }
 
@@ -67,13 +74,13 @@ const Inbox = () => {
               <h3>{request.name}</h3>
               <div className="personRequestButtons">
                 <button
-                  onClick={() => acceptRequest(request.id)}
+                  onClick={() => { acceptRequest(request); handleOnLoad(); }}
                   className="acceptRequest"
                 >
                   Accept
                 </button>
                 <button
-                  onClick={() => declineRequest(request.id)}
+                  onClick={() => { declineRequest(request); handleOnLoad(); }}
                   className="declineRequest"
                 >
                   Decline

@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
 
+  // Landing page variables
   const [activeUser, setActiveUser] = useState({});
   const [users, setUsers] = useState([]);
 
@@ -24,6 +25,8 @@ function App() {
     });
   }
 
+  // Map page variables
+
   const updateUsers = (userArray) => { 
     setUsers(userArray);
   }
@@ -32,7 +35,10 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage activeUser={activeUser} updateActiveUser={updateActiveUser} updateUsers={updateUsers} />}></Route>
-        <Route path="/map" element={<MainPage activeUser={activeUser} users={users} />}></Route>
+        <Route path="/map" element={<MainPage
+          activeUser={activeUser}
+          users={users}
+        />}></Route>
       </Routes>
     </Router>
   );

@@ -1,25 +1,24 @@
 // AddFriends.js
 import React, { useState } from "react";
 
-
 const AddFriends = ({friendsList}) => {
-  
   
   // Filtering friend requests based on what's in the search bar
   const [filteredFriends, setFilteredFriends] = useState(friendsList);
   const handleOnLoad = () => {
-    setFilteredFriends(filteredFriends);
+    console.log(friendsList);
+    setFilteredFriends(friendsList);
   }
   const handleChange = (e) => {
 
     let searchInput = e.target.value;
 
     if (searchInput.length === 0) {
-      setFilteredFriends(filteredFriends);
+      setFilteredFriends(friendsList);
       return;
     }
     let filteredArr = [];
-    filteredFriends.forEach((user) => {
+    friendsList.forEach((user) => {
 
       let userName = user.name.toLowerCase();
       let inputName = searchInput.toLowerCase();

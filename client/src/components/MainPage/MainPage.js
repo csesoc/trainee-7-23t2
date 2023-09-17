@@ -9,6 +9,9 @@ import Modal from "./Modal";
 import calley from "../../img/Calley.png"
 import luke from "../../img/Luke.png"
 import andrew from "../../img/Andrew.png"
+import henry from "../../img/Henry.png"
+import joshi from "../../img/Joshi.png"
+
 const MainPage = ({ activeUser, users }) => {
   
   console.log("hello, " + activeUser.name + "!");
@@ -17,20 +20,35 @@ const MainPage = ({ activeUser, users }) => {
   const [selectedContent, setSelectedContent] = useState("addFriends");
   const [openModal, setOpenModal] = useState(false);
   const [friendsList, setFriendsList] = useState([
-    { id: 11, name: "Calley", bio: "hi", lat: -33.9182245, lng: 151.2308635, pfp: calley },
-    { id: 21, name: "Luke", bio: "any baddies?", lat: -33.9170  , lng: 151.235, pfp: luke  },
-    { id: 31, name: "Andrew", bio: "my name is Andrew ;)",lat: -33.9189  , lng: 151.228, pfp: andrew  },
+    { name: "Calley", status: "Available", bio: "hi", lat: -33.9182245, lng: 151.2308635, pfp: calley },
+    { name: "Luke", status: "In Class", bio: "any baddies?", lat: -33.9170  , lng: 151.235, pfp: luke  },
+    { name: "Andrew", status: "Do not disturb", bio: "my name is Andrew ;)",lat: -33.9189  , lng: 151.228, pfp: andrew  },
+  ]);
+  const [userList, setUserList] = useState([
+    { name: "Henry Guo", status: "pending request..", bio: "i love lunch 😋", pfp: henry},
+    { name: "Joshi Ha", status: "pending request..", bio: "bio", pfp: joshi },
+    { name: "Anna", status: "pending request..", bio: "i live for lunch" },
+    { name: "Bella", status: "pending request..", bio: "i LOVE lunch" },
+    { name: "Annabella", status: "pending request..", bio: "i munch on lunch" }
+  ]);
+  const [requestList, setRequestList] = useState([
+    { name: "I'm", status: "💀 Doomed", bio: "i am a pipe", lat: -33.91823, lng: 151.233, pfp: luke },
+    { name: "losing", status: "In Class", bio: "i am a pipe", lat: -33.9187, lng: 151.233, pfp: luke},
+    { name: "my", status: "Available", bio: "i am a pipe", lat: -33.92, lng: 151.229 , pfp: luke },
+    { name: "brain cells", status: "Available", bio: "i am a pipe", lat: -33.9170, lng: 151.228, pfp: luke },
   ]);
 
-  /*
-    {
-      name: "Henry Guo",
-      password: "123jkl",
-      status: "online",
-      lat: -33.9173,
-      lng: 151.2313
-    }
-  */
+  const updateFriendsList = (newList) => {
+    setFriendsList(newList);
+  };
+
+  const updateUserList = (newList) => {
+    setUserList(newList);
+  };
+
+  const updateRequestList = (newList) => {
+    setRequestList(newList);
+  };
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -44,11 +62,23 @@ const MainPage = ({ activeUser, users }) => {
   const renderSidebarContent = () => {
     switch (selectedContent) {
       case "addFriends":
-        return <AddFriends friendsList={friendsList}/>;
+        return <AddFriends
+          friendsList={friendsList}
+        />;
       case "findFriends":
-        return <FindFriends />;
+        return <FindFriends
+          friendsList={friendsList}
+          updateFriendsList={updateFriendsList}
+          userList={userList}
+          updateUserList={updateUserList}
+        />;
       case "friendRequests":
-        return <FriendRequests friendsList={friendsList}/>;
+        return <FriendRequests
+          friendsList={friendsList}
+          updateFriendsList={updateFriendsList}
+          requestList={requestList}
+          updateRequestList={updateRequestList}
+        />;
       default:
         return null;
     }
