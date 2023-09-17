@@ -33,7 +33,7 @@ html, body {
     height: 100%; 
     top: 0;
     left: 0;
-    background-color: rgb(206, 240, 253);
+    background-color: rgb(58, 58, 65);
 
     transition: 1s ease;
 
@@ -48,7 +48,7 @@ html, body {
 }
 
 .close {
-    background-color: skyblue;
+    background-color: rgb(31, 33, 33);
     color: #f2f2f2;
     float: left;
     padding: 5px;
@@ -60,7 +60,7 @@ html, body {
 
 .iconBar {
     width: 60px;
-    background-color: skyblue;
+    background-color: rgb(31, 33, 33);
     overflow: auto;
     display: flex;
     flex-direction: column;
@@ -123,46 +123,68 @@ html, body {
 
 .search input[type=text]{
     width: 100%;
-    height: 25px;
+    height: 30px;
     border-radius: 8px;
     padding: 10px;
     border: none;
+    background-color: #646575;
+}
+
+.search input[type=text]::placeholder {
+    color: white;
 }
 
 .search input[type=text]:focus {
     outline: none;
-    border: rgb(96, 136, 184) 1px solid;
+    border: rgb(171, 171, 179) 1px solid;
     padding: 9px;
 }
 
 .search img{
-    background-color: skyblue;
+    background-color: rgb(76, 121, 169);
     margin-left: 5px;
     float: right;
     border: none;
     cursor: pointer;
-    width: 25px;
+    width: 30px;
     padding: 3px;
     border-radius: 10px;
 } 
 
 .search img:hover {
-    background-color: rgb(96, 136, 184);
+    background-color: rgb(64, 105, 155);
+}
+
+.pageType-header {
+    margin-top: 15px;
+    margin-bottom: -5px;
+    font-size: 28px;
+    font-family: 'IBM Plex Sans Thai', sans-serif;
 }
 
 .pageType, .person h3, .person p {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-family: 'Fredoka', sans-serif;
+}
+.person h3 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.person p {
+    font-size: 18px;
 }
 
 .listPeople {
-    margin: 20px;
+    margin: 22px;
 }
 
 .person {
     list-style-type: none;
-    background-color: white;
+    background-color: rgb(77, 78, 88);
+    border: #606571 1px solid;
     border-radius: 10px;
     padding: 5px;
     height: 110px;
@@ -178,7 +200,7 @@ p {
 .dot {
     height: 70%;
     width: 70px;
-    background-color: #bbb;
+    background-color: rgb(255, 255, 255);
     border-radius: 50%;
     float: left;
     margin: 15px 20px 20px 20px;
@@ -188,7 +210,7 @@ p {
     height: 100%;
     width: 10%;
     margin-left: 10px;
-    background-color: #4B91D2;
+    background-color: rgb(109, 117, 138);
     border-radius: 10%;
     float: right;
     margin-left: auto;
@@ -211,7 +233,7 @@ p {
 .personDetails {
     margin-left: 2%;
     margin-top: 15px;
-    color: #7A91A6;
+    color: #ffffff;
     font-size: 20px;
 }
 
@@ -232,10 +254,9 @@ p {
     border-radius: 5px;
     font-size: 13px;
     background-color: #4B91D2;
-    margin-top: 10px;
+    margin-top: 5px;
     padding: 7% 20% 7% 20%;
     text-align: center;
-
     transition: 0.5s;
 }
 
@@ -250,8 +271,8 @@ p {
     border: transparent;
     border-radius: 5px;
     font-size: 13px;
-    background-color: #98AFC5;
-    margin-top: 10px;
+    background-color: #828f9c;
+    margin-top: 5px;
     margin-left: 10px;
     padding: 7% 20% 7% 20%;
     text-align: center;
@@ -261,7 +282,7 @@ p {
 
 .declineRequest:hover {
     transition: 0.5s;
-    background-color: red;
+    background-color: rgb(209, 91, 91);
     cursor: pointer;
 }
 

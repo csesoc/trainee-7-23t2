@@ -47,7 +47,7 @@ const FindFriends = () => {
   return (
     <div onLoad={handleOnLoad}>
       <div className="pageType">
-        <h3>Find Friends</h3>
+        <h3 className="pageType-header">FIND FRIENDS</h3>
       </div>
       <div className="search">
         <form action="#">
