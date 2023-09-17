@@ -237,6 +237,23 @@ p {
     font-size: 20px;
 }
 
+.status p{
+    display: inline;
+}
+.Available{
+    color: green;
+}
+.InClass{
+    color: orange;
+}
+.Donotdisturb{
+    color: red;
+}
+.💀Doomed{
+    color: black;
+    font-weight: 1000;
+}
+
 .friendRequestContainer {
     height: 100%;
     float: right;
@@ -287,10 +304,7 @@ p {
 }
 
 .map {
-    background-color: rgb(222, 222, 222);
     width: 100%;
-    flex-grow: 1;
-    position: relative;
 }
 
 ::-webkit-scrollbar {
@@ -312,3 +326,4 @@ p {
 .removeColor:hover {
     background-color: rgb(145, 6, 6);
 }
+

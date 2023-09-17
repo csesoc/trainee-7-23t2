@@ -6,6 +6,11 @@ import FriendRequests from "./sidebar_sections/FriendRequests";
 import Map from "./Map.js";
 import React, { useState } from "react";
 import Modal from "./Modal";
+import calley from "../../img/Calley.png"
+import luke from "../../img/Luke.png"
+import andrew from "../../img/Andrew.png"
+import henry from "../../img/Henry.png"
+import joshi from "../../img/Joshi.png"
 
 const MainPage = ({ activeUser, users }) => {
   
@@ -15,21 +20,22 @@ const MainPage = ({ activeUser, users }) => {
   const [selectedContent, setSelectedContent] = useState("addFriends");
   const [openModal, setOpenModal] = useState(false);
   const [friendsList, setFriendsList] = useState([
-    { name: "Peter piper", status: "online", bio: "i am a piper" },
-    { name: "Pete", status: "online", bio: "i am a pipe" }
+    { name: "Calley", status: "Available", bio: "hi", lat: -33.9182245, lng: 151.2308635, pfp: calley },
+    { name: "Luke", status: "In Class", bio: "any baddies?", lat: -33.9170  , lng: 151.235, pfp: luke  },
+    { name: "Andrew", status: "Do not disturb", bio: "my name is Andrew ;)",lat: -33.9189  , lng: 151.228, pfp: andrew  },
   ]);
   const [userList, setUserList] = useState([
-    { name: "Henry Guo", status: "pending request..", bio: "i love lunch 😋" },
-    { name: "Joshi Ha", status: "pending request..", bio: "bio" },
+    { name: "Henry Guo", status: "pending request..", bio: "i love lunch 😋", pfp: henry},
+    { name: "Joshi Ha", status: "pending request..", bio: "bio", pfp: joshi },
     { name: "Anna", status: "pending request..", bio: "i live for lunch" },
     { name: "Bella", status: "pending request..", bio: "i LOVE lunch" },
     { name: "Annabella", status: "pending request..", bio: "i munch on lunch" }
   ]);
   const [requestList, setRequestList] = useState([
-    { name: "I'm", status: "online", bio: "i am a pipe" },
-    { name: "losing", status: "online", bio: "i am a pipe" },
-    { name: "my", status: "online", bio: "i am a pipe" },
-    { name: "brain cells", status: "online", bio: "i am a pipe" },
+    { name: "I'm", status: "💀 Doomed", bio: "i am a pipe", lat: -33.91823, lng: 151.233, pfp: luke },
+    { name: "losing", status: "In Class", bio: "i am a pipe", lat: -33.9187, lng: 151.233, pfp: luke},
+    { name: "my", status: "Available", bio: "i am a pipe", lat: -33.92, lng: 151.229 , pfp: luke },
+    { name: "brain cells", status: "Available", bio: "i am a pipe", lat: -33.9170, lng: 151.228, pfp: luke },
   ]);
 
   const updateFriendsList = (newList) => {
@@ -108,7 +114,7 @@ const MainPage = ({ activeUser, users }) => {
       </div>
 
       <div class="map">
-        <Map />
+        <Map friendsList={friendsList}/>
         {openModal && <Modal closeModal={setOpenModal} activeUser={activeUser} />}
       </div>
     </div>

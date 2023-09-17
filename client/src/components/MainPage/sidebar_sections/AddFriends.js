@@ -4,7 +4,7 @@ import React, { useState } from "react";
 const AddFriends = ({friendsList}) => {
   
   // Filtering friend requests based on what's in the search bar
-  const [filteredFriends, setFilteredFriends] = useState([]);
+  const [filteredFriends, setFilteredFriends] = useState(friendsList);
   const handleOnLoad = () => {
     console.log(friendsList);
     setFilteredFriends(friendsList);
@@ -29,7 +29,7 @@ const AddFriends = ({friendsList}) => {
     });
     setFilteredFriends(filteredArr);
   }
-
+  
   return (
     <div onLoad={handleOnLoad}>
       <div className="pageType">
@@ -50,10 +50,14 @@ const AddFriends = ({friendsList}) => {
       <ul className="listPeople">
         {filteredFriends.map((friend, index) => (
           <li className="person" key={index}>
-            <span className="dot"></span>
+            <img src={friend.pfp} className="dot"/>
             <div className="personDetails">
               <h3>{friend.name}</h3>
-              <p>Status: {friend.status}</p>
+              <p className="status"> Status:  
+                <p className={friend.status.replace(/\s/g, "")}> {friend.status}
+                </p>
+              </p>
+
             </div>
           </li>
         ))}
@@ -61,6 +65,9 @@ const AddFriends = ({friendsList}) => {
       </ul>
     </div>
   );
+
+
+
 };
 
 export default AddFriends;

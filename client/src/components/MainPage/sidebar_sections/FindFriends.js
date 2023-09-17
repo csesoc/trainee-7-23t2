@@ -72,7 +72,7 @@ const FindFriends = ({ friendsList, updateFriendsList, userList, updateUserList 
       <ul className="listPeople">
         {filteredFriends.map((person) => (
           <li className="person" key={person.id}>
-            <span className="dot"></span>
+            <img src={person.pfp} className="dot"/>
             <div className="personDetails">
               <h3>{person.name}</h3>
               <p>{person.bio}</p>
