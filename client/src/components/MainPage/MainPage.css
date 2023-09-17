@@ -241,13 +241,13 @@ p {
     display: inline;
 }
 .Available{
-    color: green;
+    color: rgb(89, 210, 116);
 }
 .InClass{
-    color: orange;
+    color: rgb(234, 201, 95);
 }
 .Donotdisturb{
-    color: red;
+    color: rgb(230, 112, 112);
 }
 .💀Doomed{
     color: black;

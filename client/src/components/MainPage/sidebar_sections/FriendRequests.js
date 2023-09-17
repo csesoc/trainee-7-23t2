@@ -69,7 +69,7 @@ const Inbox = ({ friendsList, updateFriendsList, requestList, updateRequestList 
       <ul className="listPeople">
         {filteredRequests.map((request) => (
           <li className="person" key={request.id}>
-            <span className="dot"></span>
+            <img src={request.pfp} className="dot"/>
             <div className="personDetails">
               <h3>{request.name}</h3>
               <div className="personRequestButtons">
