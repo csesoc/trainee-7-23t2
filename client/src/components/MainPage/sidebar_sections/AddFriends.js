@@ -53,7 +53,11 @@ const AddFriends = ({friendsList}) => {
             <img src={friend.pfp} className="dot"/>
             <div className="personDetails">
               <h3>{friend.name}</h3>
-              <p>Status: {friend.status}</p>
+              <p className="status"> Status:  
+                <p className={friend.status}> {friend.status}
+                </p>
+              </p>
+
             </div>
           </li>
         ))}

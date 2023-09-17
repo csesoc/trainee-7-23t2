@@ -215,6 +215,14 @@ p {
     font-size: 20px;
 }
 
+.status p{
+    display: inline;
+}
+.Available{
+    color: green;
+}
+
+
 .friendRequestContainer {
     height: 100%;
     float: right;
@@ -288,3 +296,4 @@ p {
 .removeColor:hover {
     background-color: rgb(145, 6, 6);
 }
+
