@@ -14,17 +14,35 @@ const MainPage = ({ activeUser, users }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [selectedContent, setSelectedContent] = useState("addFriends");
   const [openModal, setOpenModal] = useState(false);
-  const [friendsList, setFriendsList] = useState([]);
+  const [friendsList, setFriendsList] = useState([
+    { name: "Peter piper", status: "online", bio: "i am a piper" },
+    { name: "Pete", status: "online", bio: "i am a pipe" }
+  ]);
+  const [userList, setUserList] = useState([
+    { name: "Henry Guo", status: "pending request..", bio: "i love lunch 😋" },
+    { name: "Joshi Ha", status: "pending request..", bio: "bio" },
+    { name: "Anna", status: "pending request..", bio: "i live for lunch" },
+    { name: "Bella", status: "pending request..", bio: "i LOVE lunch" },
+    { name: "Annabella", status: "pending request..", bio: "i munch on lunch" }
+  ]);
+  const [requestList, setRequestList] = useState([
+    { name: "I'm", status: "online", bio: "i am a pipe" },
+    { name: "losing", status: "online", bio: "i am a pipe" },
+    { name: "my", status: "online", bio: "i am a pipe" },
+    { name: "brain cells", status: "online", bio: "i am a pipe" },
+  ]);
 
-  /*
-    {
-      name: "Henry Guo",
-      password: "123jkl",
-      status: "online",
-      lat: -33.9173,
-      lng: 151.2313
-    }
-  */
+  const updateFriendsList = (newList) => {
+    setFriendsList(newList);
+  };
+
+  const updateUserList = (newList) => {
+    setUserList(newList);
+  };
+
+  const updateRequestList = (newList) => {
+    setRequestList(newList);
+  };
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -38,11 +56,23 @@ const MainPage = ({ activeUser, users }) => {
   const renderSidebarContent = () => {
     switch (selectedContent) {
       case "addFriends":
-        return <AddFriends />;
+        return <AddFriends
+          friendsList={friendsList}
+        />;
       case "findFriends":
-        return <FindFriends />;
+        return <FindFriends
+          friendsList={friendsList}
+          updateFriendsList={updateFriendsList}
+          userList={userList}
+          updateUserList={updateUserList}
+        />;
       case "friendRequests":
-        return <FriendRequests />;
+        return <FriendRequests
+          friendsList={friendsList}
+          updateFriendsList={updateFriendsList}
+          requestList={requestList}
+          updateRequestList={updateRequestList}
+        />;
       default:
         return null;
     }
