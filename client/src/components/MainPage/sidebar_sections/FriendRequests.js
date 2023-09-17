@@ -52,7 +52,7 @@ const Inbox = ({ friendsList, updateFriendsList, requestList, updateRequestList 
   return (
     <div className="inbox" onLoad={handleOnLoad}>
       <div className="pageType">
-        <h3>Friend Requests</h3>
+        <h3 className="pageType-header">FRIEND REQUESTS</h3>
       </div>
       <div className="search">
         <form action="#">

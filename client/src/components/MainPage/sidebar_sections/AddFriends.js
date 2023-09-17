@@ -33,7 +33,7 @@ const AddFriends = ({friendsList}) => {
   return (
     <div onLoad={handleOnLoad}>
       <div className="pageType">
-        <h3>Friends List</h3>
+        <h3 className="pageType-header">FRIENDS LIST</h3>
       </div>
       <div className="search">
         <form action="#">
