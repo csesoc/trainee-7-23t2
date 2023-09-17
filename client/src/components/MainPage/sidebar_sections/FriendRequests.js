@@ -18,8 +18,32 @@ const Inbox = () => {
     setPendingRequests(updatedRequests);
   };
 
+  // Filtering friend requests based on what's in the search bar
+  const [filteredRequests, setFilteredRequests] = useState([]);
+  const handleOnLoad = () => {
+    setFilteredRequests(pendingRequests);
+  }
+  const handleChange = (e) => { 
+    let searchInput = e.target.value;
+    if (searchInput.length === 0) { 
+      setFilteredRequests(pendingRequests);
+      return;
+    }
+    let filteredArr = [];
+    pendingRequests.forEach((user) => {
+
+      let userName = user.name.toLowerCase();
+      let inputName = searchInput.toLowerCase();
+
+      if (userName.includes(inputName)) {
+        filteredArr.push(user);
+      }
+    });
+    setFilteredRequests(filteredArr);
+  }
+
   return (
-    <div className="inbox">
+    <div className="inbox" onLoad={handleOnLoad}>
       <div className="pageType">
         <h3>Friend Requests</h3>
       </div>
@@ -29,15 +53,14 @@ const Inbox = () => {
             type="text"
             placeholder="Search..."
             name="search"
+            onChange={handleChange}
           />
-          {/* <button>
-            🔍
-          </button> */}
         </form>
+        <img src="https://img.icons8.com/ios/250/FFFFFF/search--v1.png" alt="Search button"></img>
       </div>
 
       <ul className="listPeople">
-        {pendingRequests.map((request) => (
+        {filteredRequests.map((request) => (
           <li className="person" key={request.id}>
             <span className="dot"></span>
             <div className="personDetails">

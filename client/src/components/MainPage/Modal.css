@@ -115,12 +115,17 @@
     font-size: 1.5rem;
 }
 
-.modal-body input[type=text], input[type=password] {
+.modal-body input[type=text], input[type=password], #status-selection {
     flex: 1;
     height: 2rem;
     border-radius: 25px;
     padding: 0.5rem;
     border: none;
     vertical-align: middle;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+}
+
+#status-selection {
+    font-size: 1.2rem;
+    padding-block: 0.2rem;
 }

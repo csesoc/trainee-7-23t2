@@ -1,11 +1,38 @@
 // AddFriends.js
 import React, { useState } from "react";
 
-const AddFriends = () => {
-  const [friends, setFriends] = useState([]);
 
+const AddFriends = ({friendsList}) => {
+  
+  
+  // Filtering friend requests based on what's in the search bar
+  const [filteredFriends, setFilteredFriends] = useState(friendsList);
+  const handleOnLoad = () => {
+    setFilteredFriends(filteredFriends);
+  }
+  const handleChange = (e) => {
+
+    let searchInput = e.target.value;
+
+    if (searchInput.length === 0) {
+      setFilteredFriends(filteredFriends);
+      return;
+    }
+    let filteredArr = [];
+    filteredFriends.forEach((user) => {
+
+      let userName = user.name.toLowerCase();
+      let inputName = searchInput.toLowerCase();
+
+      if (userName.includes(inputName)) {
+        filteredArr.push(user);
+      }
+    });
+    setFilteredFriends(filteredArr);
+  }
+  
   return (
-    <div>
+    <div onLoad={handleOnLoad}>
       <div className="pageType">
         <h3>Friends List</h3>
       </div>
@@ -15,15 +42,14 @@ const AddFriends = () => {
             type="text"
             placeholder="Search..."
             name="search"
+            onChange={handleChange}
           />
-          {/* <button>
-            🔍
-          </button> */}
         </form>
+        <img src="https://img.icons8.com/ios/250/FFFFFF/search--v1.png" alt="Search button"></img>
       </div>
 
       <ul className="listPeople">
-        {friends.map((friend, index) => (
+        {filteredFriends.map((friend, index) => (
           <li className="person" key={index}>
             <img src={friend.pfp} className="dot"/>
             <div className="personDetails">
@@ -36,6 +62,9 @@ const AddFriends = () => {
       </ul>
     </div>
   );
+
+
+
 };
 
 export default AddFriends;
